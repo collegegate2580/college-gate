@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>COLLEGE GATE</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+</head>
+<body>
+
+  <header>
+    <div class="logo-container">
+      <div class="logo-text">COLLEGE GATE</div>
+      <img src="Classical_College_Gate_Logo__1_-removebg-preview.png" class="logo-img" alt="Logo" />
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#colleges">Colleges</a></li>
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#fees">Fees Structure</a></li>
+        <li><a href="#stats">Our Impact</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-content" data-aos="zoom-in">
+      <h1 data-aos="fade-down">Welcome to <span>COLLEGE GATE</span></h1>
+      <p data-aos="fade-up">Explore top colleges, courses, and fees – all in one place.</p>
+      <a href="#colleges" class="btn" data-aos="zoom-in-up">Get Started</a>
+    </div>
+  </section>
+
+  <section id="colleges" data-aos="fade-up">
+    <h2>Colleges</h2>
+    <div class="feature-container">
+      <div class="feature-card">UPES</div>
+      <div class="feature-card">Uttaranchal University</div>
+      <div class="feature-card">GRD</div>
+      <div class="feature-card">Dev Bhoomi</div>
+      <div class="feature-card">COER</div>
+      <div class="feature-card">Sai Group</div>
+    </div>
+  </section>
+
+  <section id="courses" data-aos="fade-right">
+    <h2>Courses</h2>
+    <div class="feature-container">
+      <div class="feature-card">Engineering</div>
+      <div class="feature-card">Management</div>
+      <div class="feature-card">Pharmacy</div>
+      <div class="feature-card">Law</div>
+    </div>
+  </section>
+
+  <section id="fees" data-aos="fade-left">
+    <h2>Fees Structure</h2>
+    <div class="feature-container">
+      <div class="feature-card">B.Tech - ₹1.2L/yr</div>
+      <div class="feature-card">MBA - ₹1.5L/yr</div>
+      <div class="feature-card">Pharmacy - ₹90K/yr</div>
+    </div>
+  </section>
+
+  <section id="stats" data-aos="zoom-in-up">
+    <h2>Our Impact</h2>
+    <div class="stat-container">
+      <div class="stat">100% Placement</div>
+      <div class="stat">Highest Package: ₹1.5Cr Intl</div>
+      <div class="stat">Highest Package: ₹60LPA Dom</div>
+    </div>
+  </section>
+
+  <section id="testimonials">
+    <h2>Testimonials</h2>
+    <div class="testimonial active">"College Gate helped me find my dream college!"</div>
+    <div class="testimonial">"Simple, fast, and super helpful experience."</div>
+    <div class="testimonial">"Everything was in one place — made my life easier."</div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact">
+      <p>Need counseling? Call us at <strong>+91-9876543210</strong></p>
+      <a href="mailto:info@collegegate.com">info@collegegate.com</a>
+    </div>
+  </section>
+  <a href="tel:+919876543210" class="floating-contact">📞 Contact Now</a>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    const testimonials = document.querySelectorAll('.testimonial');
+    let index = 0;
+    setInterval(() => {
+      testimonials.forEach(t => t.classList.remove('active'));
+      testimonials[index].classList.add('active');
+      index = (index + 1) % testimonials.length;
+    }, 3000);
+  </script>
+
+</body>
+</html>
