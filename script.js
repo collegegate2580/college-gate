@@ -1,35 +1,48 @@
-// Animate AOS
-AOS.init({ duration: 1000, once: true });
+// Initialize AOS (Animate On Scroll)
+AOS.init({
+  duration: 1200,
+  once: true,
+  easing: 'ease-in-out',
+});
 
-// Testimonial carousel
+// Enhanced Testimonial Carousel with Fade Animation
 const testimonials = document.querySelectorAll('.testimonial');
 let index = 0;
-setInterval(() => {
-  testimonials.forEach(t => t.classList.remove('active'));
-  testimonials[index].classList.add('active');
-  index = (index + 1) % testimonials.length;
-}, 3000);
 
-// Animated counters for stats
+function showTestimonial(i) {
+  testimonials.forEach((t, idx) => {
+    t.classList.remove('active', 'fade-in');
+    if (idx === i) {
+      t.classList.add('active', 'fade-in');
+    }
+  });
+}
+
+setInterval(() => {
+  showTestimonial(index);
+  index = (index + 1) % testimonials.length;
+}, 4000);
+
+// Enhanced Counter Animation using requestAnimationFrame
 document.addEventListener("DOMContentLoaded", () => {
   const counters = document.querySelectorAll(".stat span");
-  const speed = 50;
 
   counters.forEach(counter => {
-    const updateCount = () => {
-      const target = +counter.getAttribute("data-target");
-      const count = +counter.innerText;
+    const target = +counter.getAttribute("data-target");
+    let count = 0;
+    const duration = 2000; // in ms
+    const startTime = performance.now();
 
-      const inc = Math.ceil(target / speed);
+    function animateCount(currentTime) {
+      const elapsed = currentTime - startTime;
+      count = Math.min(Math.ceil((elapsed / duration) * target), target);
+      counter.innerText = count;
 
       if (count < target) {
-        counter.innerText = count + inc;
-        setTimeout(updateCount, 20);
-      } else {
-        counter.innerText = target;
+        requestAnimationFrame(animateCount);
       }
-    };
+    }
 
-    updateCount();
+    requestAnimationFrame(animateCount);
   });
 });
