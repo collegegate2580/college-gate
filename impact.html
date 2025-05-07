@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Impact - College Gate</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #141e30, #243b55);
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    h1 {
+      color: #00f7ff;
+      font-size: 2.8rem;
+      margin-bottom: 40px;
+    }
+
+    .impact-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .impact-box {
+      background: #1c2c3b;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .impact-box:hover {
+      transform: translateY(-8px);
+    }
+
+    .counter {
+      font-size: 3rem;
+      color: #00f7ff;
+      font-weight: bold;
+    }
+
+    .label {
+      margin-top: 10px;
+      font-size: 1.1rem;
+    }
+
+    .home-link {
+      margin-top: 60px;
+      display: inline-block;
+      color: #00f7ff;
+      font-weight: bold;
+      font-size: 1rem;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Our Impact</h1>
+  <div class="impact-container">
+    <div class="impact-box">
+      <div class="counter" data-target="25000">0</div>
+      <div class="label">Students Counseled</div>
+    </div>
+    <div class="impact-box">
+      <div class="counter" data-target="200">0</div>
+      <div class="label">Partner Colleges</div>
+    </div>
+    <div class="impact-box">
+      <div class="counter" data-target="15000">0</div>
+      <div class="label">Admissions Completed</div>
+    </div>
+    <div class="impact-box">
+      <div class="counter" data-target="95">0</div>
+      <div class="label">Placement Success Rate (%)</div>
+    </div>
+  </div>
+
+  <a class="home-link" href="index.html">← Go Back to Main Page</a>
+
+  <script>
+    const counters = document.querySelectorAll('.counter');
+    counters.forEach(counter => {
+      counter.innerText = '0';
+
+      const updateCounter = () => {
+        const target = +counter.getAttribute('data-target');
+        const current = +counter.innerText;
+        const increment = target / 200;
+
+        if (current < target) {
+          counter.innerText = Math.ceil(current + increment);
+          setTimeout(updateCounter, 10);
+        } else {
+          counter.innerText = target.toLocaleString();
+        }
+      };
+
+      updateCounter();
+    });
+  </script>
+</body>
+</html>

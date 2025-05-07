@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Testimonials - College Gate</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #232526, #414345);
+      color: white;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      color: #00f7ff;
+      margin-bottom: 40px;
+    }
+
+    .testimonial-container {
+      max-width: 900px;
+      margin: auto;
+      position: relative;
+    }
+
+    .testimonial {
+      display: none;
+      background: #1e293b;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      animation: fade 1s ease-in-out;
+    }
+
+    .testimonial.active {
+      display: block;
+    }
+
+    .testimonial p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .author {
+      font-weight: bold;
+      color: #00f7ff;
+    }
+
+    .controls {
+      margin-top: 25px;
+    }
+
+    .controls button {
+      background: #00f7ff;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      margin: 0 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .controls button:hover {
+      background: #00d6e0;
+    }
+
+    .home-link {
+      margin-top: 40px;
+      display: inline-block;
+      color: #00f7ff;
+      font-weight: bold;
+      font-size: 1rem;
+      text-decoration: none;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>What Students Say</h1>
+  <div class="testimonial-container">
+    <div class="testimonial active">
+      <p>"College Gate helped me find the perfect college for my B.Tech program. The counseling was extremely helpful and personalized!"</p>
+      <div class="author">— Aakash Sharma, UPES</div>
+    </div>
+    <div class="testimonial">
+      <p>"I was confused about which university to choose. College Gate made everything easy. I’m now happily studying at Dev Bhoomi."</p>
+      <div class="author">— Priya Rawat, Dev Bhoomi University</div>
+    </div>
+    <div class="testimonial">
+      <p>"They made the admission process smooth and stress-free. Highly recommended for anyone looking for guidance."</p>
+      <div class="author">— Mohit Singh, GRD Institute</div>
+    </div>
+    <div class="testimonial">
+      <p>"Thanks to College Gate, I got into a top college with a scholarship. The team really knows what they’re doing."</p>
+      <div class="author">— Neha Joshi, Uttaranchal University</div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button onclick="prevTestimonial()">Previous</button>
+    <button onclick="nextTestimonial()">Next</button>
+  </div>
+
+  <a class="home-link" href="index.html">← Go Back to Main Page</a>
+
+  <script>
+    const testimonials = document.querySelectorAll('.testimonial');
+    let current = 0;
+
+    function showTestimonial(index) {
+      testimonials.forEach(t => t.classList.remove('active'));
+      testimonials[index].classList.add('active');
+    }
+
+    function nextTestimonial() {
+      current = (current + 1) % testimonials.length;
+      showTestimonial(current);
+    }
+
+    function prevTestimonial() {
+      current = (current - 1 + testimonials.length) % testimonials.length;
+      showTestimonial(current);
+    }
+  </script>
+
+</body>
+</html>
