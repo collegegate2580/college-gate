@@ -46,3 +46,20 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(animateCount);
   });
 });
+// Scroll to counseling form when Apply Now is clicked
+document.querySelectorAll('.college-info button').forEach(button => {
+  button.addEventListener('click', () => {
+    const formSection = document.getElementById('counselingFormSection');
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+document.querySelectorAll('.college-card').forEach(card => {
+  card.addEventListener('mouseenter', () => {
+    card.classList.add('show-info');
+  });
+  card.addEventListener('mouseleave', () => {
+    card.classList.remove('show-info');
+  });
+});
