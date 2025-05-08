@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>COLLEGE GATE</title>
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+ <!-- AOS CSS -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
 </head>
 <body>
@@ -15,6 +17,8 @@
       <div class="logo-text">COLLEGE GATE</div>
       <img src="Classical_College_Gate_Logo__1_-removebg-preview.png" class="logo-img" alt="Logo" />
     </div>
+   
+    
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -24,9 +28,13 @@
         <li><a href="impact.html">Our Impact</a></li>
         <li><a href="testimonials.html">Testimonials</a></li>
         <li><a href="contact.html">Contact</a></li>
+        </ul>
     </nav>
-  </header>
 
+   
+    
+  </header>
+ 
   <section class="hero" id="home">
     <div class="hero-content" data-aos="zoom-in">
       <h1 data-aos="fade-down">Welcome to <span>COLLEGE GATE</span></h1>
@@ -34,26 +42,143 @@
       <a href="#colleges" class="btn" data-aos="zoom-in-up">Get Started</a>
     </div>
   </section>
-
-  <section id="colleges" data-aos="fade-up">
-    <h2>Colleges</h2>
-    <div class="feature-container">
-      <div class="feature-card">UPES</div>
-      <div class="feature-card">Uttaranchal University</div>
-      <div class="feature-card">GRD</div>
-      <div class="feature-card">Dev Bhoomi</div>
-      <div class="feature-card">COER</div>
-      <div class="feature-card">Sai Group</div>
-      <div class="feature-card">Maya Devi University</div>
-      <div class="feature-card">BFIT</div>
-      <div class="feature-card">Subharti University</div>
-      <div class="feature-card">JBIT</div>
-      <div class="feature-card">Jigyasa University</div>
-      <div class="feature-card">PCSIT</div>
-
-
-    </div>
+  <section class="search-explore" data-aos="fade-left">
+    <h2>Search and Explore India's Top Colleges</h2>
+    <input type="text" id="collegeSearch" placeholder="Search for colleges...">
   </section>
+  <section class="tagline" data-aos="fade-up">
+    <h1>From confusion to clarity, we help you choose wisely</h1>
+  </section>
+  <section class="why-choose" data-aos="fade-right">
+    <h2>Why Choose College Gate</h2>
+    <p>We provide expert counseling, comprehensive college information, and personalized guidance to help you make informed decisions.</p>
+    <button class="counseling-btn">Get Counseling</button>
+  </section>
+  <section class="colleges-list" data-aos="fade-up">
+    <h2>Top Colleges</h2>
+  
+    <div class="college-card" data-college="UPES">
+      <div class="college-title">UPES</div>
+      <div class="college-info">
+        <img src="UPES.jpg" alt="UPES">
+        <p>Courses: B.Tech, MBA</p>
+        <p>Fees: ₹1,00,000/year</p>
+        <p>Top Recruiters: Infosys, Wipro</p>
+        <p>Scholarships Available</p>
+        <button onclick="location.href='#need-counseling'">Apply Now</button>
+      </div>
+    </div>
+  
+    <div class="college-card" data-college="GRD">
+      <div class="college-title">GRD</div>
+      <div class="college-info">
+        <img src="GRD.jpg" alt="GRD">
+        <p>Courses: B.Tech, MBA</p>
+        <p>Fees: ₹2,00,000/year</p>
+        <p>Top Recruiters: Infosys, Wipro</p>
+        <p>Scholarships Available</p>
+        <button onclick="location.href='#need-counseling'">Apply Now</button>
+      </div>
+    </div>
+
+    <div class="college-card" data-college="DEV Bhoomi">
+      <div class="college-title">GRD</div>
+      <div class="college-info">
+        <img src="dev bhoomi.jpg" alt="DEV Bhoomi">
+        <p>Courses: B.Tech, MBA</p>
+        <p>Fees: ₹2,00,000/year</p>
+        <p>Top Recruiters: Infosys, Wipro</p>
+        <p>Scholarships Available</p>
+        <button onclick="location.href='#need-counseling'">Apply Now</button>
+      </div>
+    </div>
+
+    <div class="college-card" data-college="Maya Devi">
+      <div class="college-title">GRD</div>
+      <div class="college-info">
+        <img src="maya devi.jpg" alt="maya Devi">
+        <p>Courses: B.Tech, MBA</p>
+        <p>Fees: ₹2,00,000/year</p>
+        <p>Top Recruiters: Infosys, Wipro</p>
+        <p>Scholarships Available</p>
+        <button onclick="location.href='#need-counseling'">Apply Now</button>
+      </div>
+    </div>
+
+    <div class="college-card" data-college="Sai group OF Institution">
+      <div class="college-title">GRD</div>
+      <div class="college-info">
+        <img src="sai group.png" alt="Sai Group Of Instituiton">
+        <p>Courses: B.Tech, MBA</p>
+        <p>Fees: ₹2,00,000/year</p>
+        <p>Top Recruiters: Infosys, Wipro</p>
+        <p>Scholarships Available</p>
+        <button onclick="location.href='#need-counseling'">Apply Now</button>
+      </div>
+    </div>
+
+    <div class="college-card" data-college="COER">
+      <div class="college-title">GRD</div>
+      <div class="college-info">
+        <img src="COER.jpg" alt="COER">
+        <p>Courses: B.Tech, MBA</p>
+        <p>Fees: ₹2,00,000/year</p>
+        <p>Top Recruiters: Infosys, Wipro</p>
+        <p>Scholarships Available</p>
+        <button onclick="location.href='#need-counseling'">Apply Now</button>
+      </div>
+    </div>
+
+    <div class="college-card" data-college="Subharti university">
+      <div class="college-title">GRD</div>
+      <div class="college-info">
+        <img src="subharti.jpg" alt="Subharti university">
+        <p>Courses: B.Tech, MBA</p>
+        <p>Fees: ₹2,00,000/year</p>
+        <p>Top Recruiters: Infosys, Wipro</p>
+        <p>Scholarships Available</p>
+        <button onclick="location.href='#need-counseling'">Apply Now</button>
+      </div>
+    </div>
+
+    <div class="college-card" data-college="uttranchal University">
+      <div class="college-title">GRD</div>
+      <div class="college-info">
+        <img src="uttanchal university.jpg" alt="uttranchal University">
+        <p>Courses: B.Tech, MBA</p>
+        <p>Fees: ₹2,00,000/year</p>
+        <p>Top Recruiters: Infosys, Wipro</p>
+        <p>Scholarships Available</p>
+        <button onclick="location.href='#need-counseling'">Apply Now</button>
+      </div>
+    </div>
+
+    <div class="college-card" data-college="JBIT">
+      <div class="college-title">GRD</div>
+      <div class="college-info">
+        <img src="JBIT.jpg" alt="JBIT">
+        <p>Courses: B.Tech, MBA</p>
+        <p>Fees: ₹2,00,000/year</p>
+        <p>Top Recruiters: Infosys, Wipro</p>
+        <p>Scholarships Available</p>
+        <button onclick="location.href='#need-counseling'">Apply Now</button>
+      </div>
+    </div>
+  
+    <div class="college-card" data-college="Jigyasa University">
+      <div class="college-title">GRD</div>
+      <div class="college-info">
+        <img src="jigyasa.jpg" alt="Jigyasa university">
+        <p>Courses: B.Tech, MBA</p>
+        <p>Fees: ₹2,00,000/year</p>
+        <p>Top Recruiters: Infosys, Wipro</p>
+        <p>Scholarships Available</p>
+        <button onclick="location.href='#need-counseling'">Apply Now</button>
+      </div>
+    </div>
+    <!-- Add more college cards similarly -->
+  </section>
+  
 
   <section id="courses" data-aos="fade-right">
     <h2>Courses</h2>
@@ -93,10 +218,21 @@
   <section id="contact">
     <h2>Contact</h2>
     <div class="contact">
-      <p>Need counseling? Call us at <strong>+91-9876543210</strong></p>
+      <p> Call us at <strong>+91-9876543210</strong></p>
       <a href="mailto:info@collegegate.co">info@collegegate.com</a>
     </div>
+
   </section>
+  <section class="counseling-form" data-aos="zoom-in">
+    <h2>Need Counseling?</h2>
+    <form id="counselingForm">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <input type="text" name="contact" placeholder="Your Contact Number" required>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+  
   <a href="tel:+917017472735" class="floating-contact">📞 Contact Now</a>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
@@ -110,6 +246,11 @@
       index = (index + 1) % testimonials.length;
     }, 3000);
   </script>
+<!-- AOS JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
 
 </body>
 </html>
