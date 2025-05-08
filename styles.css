@@ -359,3 +359,181 @@ p {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+.tagline {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #f0f0f0;
+}
+
+.tagline h1 {
+  font-size: 2.5em;
+  color: #333;
+}
+.why-choose {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.why-choose h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.why-choose p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+.counseling-btn {
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.counseling-btn:hover {
+  background-color: #0056b3;
+}
+.search-explore {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #9b3e3e;
+}
+
+.search-explore h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+#collegeSearch {
+  width: 60%;
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.counseling-form {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.counseling-form h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.counseling-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.counseling-form input {
+  width: 60%;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.counseling-form button {
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.counseling-form button:hover {
+  background-color: #218838;
+}
+.colleges-list {
+  padding: 50px 20px;
+  background-color: #808080;
+}
+
+.colleges-list h2 {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 30px;
+}
+
+.college-card {
+  position: relative;
+  width: 90%;
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.college-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.college-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #0e7b91;
+  text-align: center;
+  transition: opacity 0.3s ease;
+}
+
+.college-card:hover .college-title {
+  opacity: 0;
+}
+
+.college-info {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.5s ease, max-height 0.5s ease;
+}
+
+.college-card:hover .college-info {
+  opacity: 1;
+  max-height: 600px;
+  margin-top: 10px;
+}
+
+.college-info img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.college-info p {
+  margin: 5px 0;
+  font-size: 1em;
+  color: #333;
+}
+
+.college-info button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 1em;
+  background: linear-gradient(to right, #17a2b8, #0e7b91);
+  color: #9e9b9b;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.college-info button:hover {
+  background: linear-gradient(to right, #138496, #0c5e6c);
+}
