@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Explore Colleges - College Gate</title>
+  <title>College Gate - Explore Colleges</title>
   <style>
     body {
       margin: 0;
@@ -11,6 +11,30 @@
       background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
       color: #fff;
       overflow-x: hidden;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 20px;
+      background-color: #000000cc;
+      box-shadow: 0 4px 12px rgba(0, 255, 255, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header img {
+      height: 150px; /* Logo size increased */
+      margin-right: 15px;
+    }
+
+    header h2 {
+      font-size: 1.8rem;
+      color: #00f7ff;
+      margin: 0;
+      font-weight: bold;
     }
 
     h1 {
@@ -99,10 +123,15 @@
     }
 
     @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+      }
+      header img {
+        margin: 0 0 8px 0;
+      }
       .gallery-container {
         padding: 10px;
       }
-
       .gallery-track {
         flex-wrap: wrap;
         justify-content: center;
@@ -111,6 +140,12 @@
     }
   </style>
 </head>
+<body>
+  <header>
+    <img src="logo.jpg" alt="College Gate Logo" />
+    
+  </header>
+
 <body>
   <h1>Explore Top Colleges</h1>
   <div class="gallery-container">
