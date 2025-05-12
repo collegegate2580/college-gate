@@ -668,4 +668,33 @@ p {
     padding: 15px 10px;
   }
 }
+hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: white;
+  margin-right: 20px;
+}
 
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+    margin-left: auto;
+  }
+
+  .navbar {
+    display: none;
+    flex-direction: column;
+    background: #000e1f;
+    width: 100%;
+  }
+
+  .navbar a {
+    padding: 10px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .navbar.show {
+    display: flex;
+  }
+}
