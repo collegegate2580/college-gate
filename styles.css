@@ -604,3 +604,68 @@ p {
     background-size: cover;
   }
 }
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .navbar a {
+    margin: 10px 0;
+  }
+
+  .hero h1 {
+    font-size: 22px;
+    padding: 0 10px;
+  }
+
+  .search-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-form input {
+    width: 90%;
+    margin-bottom: 10px;
+  }
+
+  .features {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .accordion-toggle {
+    font-size: 16px;
+  }
+
+  .recruiters .logos {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .testimonial {
+    font-size: 14px;
+  }
+
+  .contact-form form {
+    width: 90%;
+  }
+
+  footer {
+    font-size: 14px;
+    padding: 15px 10px;
+  }
+}
+
