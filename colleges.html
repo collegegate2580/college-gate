@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Courses - College Gate</title>
+  <title>Explore Colleges - College Gate</title>
   <style>
     body {
       margin: 0;
@@ -13,7 +13,6 @@
       overflow-x: hidden;
     }
 
-    
     h1 {
       text-align: center;
       font-size: 2.8rem;
@@ -22,13 +21,17 @@
     }
 
     .gallery-container {
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+      padding: 20px 0;
+    }
+
+    .gallery-track {
       display: flex;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      padding: 20px;
-      scroll-behavior: smooth;
       gap: 20px;
-      animation: scrollGallery 50s linear infinite;
+      width: max-content;
+      animation: scrollLoop 60s linear infinite;
     }
 
     .college-card {
@@ -82,31 +85,28 @@
       background-color: #00d3e0;
     }
 
-    @keyframes scrollGallery {
+    @keyframes scrollLoop {
       0% {
-        transform: translateX(0);
+        transform: translateX(0%);
       }
       100% {
         transform: translateX(-50%);
       }
     }
 
-    /* Scrollbar Hidden */
-    .gallery-container::-webkit-scrollbar {
-      display: none;
-    }
-
-    .gallery-container {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
+    .gallery-container:hover .gallery-track {
+      animation-play-state: paused;
     }
 
     @media (max-width: 600px) {
       .gallery-container {
+        padding: 10px;
+      }
+
+      .gallery-track {
         flex-wrap: wrap;
         justify-content: center;
         animation: none;
-        overflow-x: hidden;
       }
     }
   </style>
@@ -114,156 +114,129 @@
 <body>
   <h1>Explore Top Colleges</h1>
   <div class="gallery-container">
-    <!-- Repeat this block for each college -->
-    <div class="college-card">
-      <img src="UPES.jpg" alt="UPES">
-      <div class="college-title">UPES</div>
-      <div class="college-info">
-        <p>Courses: B.Tech, MBA</p>
-        <p>Fees: ₹1,00,000/year</p>
-        <p>Top Recruiters: Infosys, Wipro</p>
-        <p>Scholarships Available</p>
-        <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
+    <div class="gallery-track" id="gallery-track">
+      <!-- Original College Cards -->
+      <div class="college-card">
+        <img src="UPES.jpg" alt="UPES">
+        <div class="college-title">UPES</div>
+        <div class="college-info">
+          <p>Courses: B.Tech, MBA</p>
+          <p>Fees: ₹1,00,000/year</p>
+          <p>Top Recruiters: Infosys, Wipro</p>
+          <p>Scholarships Available</p>
+          <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
+        </div>
       </div>
-    </div>
+      <div class="college-card">
+        <img src="GRD.jpg" alt="GRD">
+        <div class="college-title">GRD</div>
+        <div class="college-info">
+          <p>Courses: B.Tech, MBA</p>
+          <p>Fees: ₹2,00,000/year</p>
+          <p>Top Recruiters: Infosys, Wipro</p>
+          <p>Scholarships Available</p>
+          <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
+        </div>
+      </div>
+      <div class="college-card">
+        <img src="dev bhoomi.jpg" alt="Dev Bhoomi">
+        <div class="college-title">Dev Bhoomi</div>
+        <div class="college-info">
+          <p>Courses: B.Tech, MBA</p>
+          <p>Fees: ₹2,00,000/year</p>
+          <p>Top Recruiters: Infosys, Wipro</p>
+          <p>Scholarships Available</p>
+          <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
+        </div>
+      </div>
+      <div class="college-card">
+        <img src="maya devi.jpg" alt="Maya Devi">
+        <div class="college-title">Maya Devi</div>
+        <div class="college-info">
+          <p>Courses: B.Tech, MBA</p>
+          <p>Fees: ₹2,00,000/year</p>
+          <p>Top Recruiters: Infosys, Wipro</p>
+          <p>Scholarships Available</p>
+          <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
+        </div>
+      </div>
+      <div class="college-card">
+        <img src="sai group.png" alt="Sai Group">
+        <div class="college-title">Sai Group Of Institutions</div>
+        <div class="college-info">
+          <p>Courses: B.Tech, MBA</p>
+          <p>Fees: ₹2,00,000/year</p>
+          <p>Top Recruiters: Infosys, Wipro</p>
+          <p>Scholarships Available</p>
+          <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
+        </div>
+      </div>
+      <div class="college-card">
+        <img src="COER.jpg" alt="COER">
+        <div class="college-title">COER</div>
+        <div class="college-info">
+          <p>Courses: B.Tech, MBA</p>
+          <p>Fees: ₹2,00,000/year</p>
+          <p>Top Recruiters: Infosys, Wipro</p>
+          <p>Scholarships Available</p>
+          <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
+        </div>
+      </div>
+      <div class="college-card">
+        <img src="subharti.jpg" alt="Subharti University">
+        <div class="college-title">Subharti University</div>
+        <div class="college-info">
+          <p>Courses: B.Tech, MBA</p>
+          <p>Fees: ₹2,00,000/year</p>
+          <p>Top Recruiters: Infosys, Wipro</p>
+          <p>Scholarships Available</p>
+          <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
+        </div>
+      </div>
+      <div class="college-card">
+        <img src="uttanchal university.jpg" alt="Uttaranchal University">
+        <div class="college-title">Uttaranchal University</div>
+        <div class="college-info">
+          <p>Courses: B.Tech, MBA</p>
+          <p>Fees: ₹2,00,000/year</p>
+          <p>Top Recruiters: Infosys, Wipro</p>
+          <p>Scholarships Available</p>
+          <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
+        </div>
+      </div>
+      <div class="college-card">
+        <img src="JBIT.jpg" alt="JBIT">
+        <div class="college-title">JBIT</div>
+        <div class="college-info">
+          <p>Courses: B.Tech, MBA</p>
+          <p>Fees: ₹2,00,000/year</p>
+          <p>Top Recruiters: Infosys, Wipro</p>
+          <p>Scholarships Available</p>
+          <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
+        </div>
+      </div>
+      <div class="college-card">
+        <img src="jigyasa.jpg" alt="Jigyasa University">
+        <div class="college-title">Jigyasa University</div>
+        <div class="college-info">
+          <p>Courses: B.Tech, MBA</p>
+          <p>Fees: ₹2,00,000/year</p>
+          <p>Top Recruiters: Infosys, Wipro</p>
+          <p>Scholarships Available</p>
+          <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
+        </div>
+      </div>
 
-    <div class="college-card">
-      <img src="GRD.jpg" alt="GRD">
-      <div class="college-title">GRD</div>
-      <div class="college-info">
-        <p>Courses: B.Tech, MBA</p>
-        <p>Fees: ₹2,00,000/year</p>
-        <p>Top Recruiters: Infosys, Wipro</p>
-        <p>Scholarships Available</p>
-       
-        <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
-      </div>
-    </div>
-
-    <div class="college-card">
-      <img src="dev bhoomi.jpg" alt="Dev Bhoomi">
-      <div class="college-title">Dev Bhoomi</div>
-      <div class="college-info">
-        <p>Courses: B.Tech, MBA</p>
-        <p>Fees: ₹2,00,000/year</p>
-        <p>Top Recruiters: Infosys, Wipro</p>
-        <p>Scholarships Available</p>
-        <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
-      </div>
-    </div>
-
-    <div class="college-card">
-      <img src="maya devi.jpg" alt="Maya Devi">
-      <div class="college-title">Maya Devi</div>
-      <div class="college-info">
-        <p>Courses: B.Tech, MBA</p>
-        <p>Fees: ₹2,00,000/year</p>
-        <p>Top Recruiters: Infosys, Wipro</p>
-        <p>Scholarships Available</p>
-        <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
-      </div>
-    </div>
-
-    <div class="college-card">
-      <img src="sai group.png" alt="Sai Group">
-      <div class="college-title">Sai Group Of Institutions</div>
-      <div class="college-info">
-        <p>Courses: B.Tech, MBA</p>
-        <p>Fees: ₹2,00,000/year</p>
-        <p>Top Recruiters: Infosys, Wipro</p>
-        <p>Scholarships Available</p>
-        <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
-      </div>
-    </div>
-
-    <div class="college-card">
-      <img src="COER.jpg" alt="COER">
-      <div class="college-title">COER</div>
-      <div class="college-info">
-        <p>Courses: B.Tech, MBA</p>
-        <p>Fees: ₹2,00,000/year</p>
-        <p>Top Recruiters: Infosys, Wipro</p>
-        <p>Scholarships Available</p>
-        <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
-      </div>
-    </div>
-
-    <div class="college-card">
-      <img src="subharti.jpg" alt="Subharti University">
-      <div class="college-title">Subharti University</div>
-      <div class="college-info">
-        <p>Courses: B.Tech, MBA</p>
-        <p>Fees: ₹2,00,000/year</p>
-        <p>Top Recruiters: Infosys, Wipro</p>
-        <p>Scholarships Available</p>
-        <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
-      </div>
-    </div>
-
-    <div class="college-card">
-      <img src="uttanchal university.jpg" alt="Uttaranchal University">
-      <div class="college-title">Uttaranchal University</div>
-      <div class="college-info">
-        <p>Courses: B.Tech, MBA</p>
-        <p>Fees: ₹2,00,000/year</p>
-        <p>Top Recruiters: Infosys, Wipro</p>
-        <p>Scholarships Available</p>
-        <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
-      </div>
-    </div>
-
-    <div class="college-card">
-      <img src="JBIT.jpg" alt="JBIT">
-      <div class="college-title">JBIT</div>
-      <div class="college-info">
-        <p>Courses: B.Tech, MBA</p>
-        <p>Fees: ₹2,00,000/year</p>
-        <p>Top Recruiters: Infosys, Wipro</p>
-        <p>Scholarships Available</p>
-        <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
-      </div>
-    </div>
-
-    <div class="college-card">
-      <img src="jigyasa.jpg" alt="Jigyasa University">
-      <div class="college-title">Jigyasa University</div>
-      <div class="college-info">
-        <p>Courses: B.Tech, MBA</p>
-        <p>Fees: ₹2,00,000/year</p>
-        <p>Top Recruiters: Infosys, Wipro</p>
-        <p>Scholarships Available</p>
-        <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
-      </div>
+      <!-- Duplicate all college cards again to create infinite scroll -->
+      <!-- COPY-PASTE the exact same cards again -->
+      <!-- You can use JavaScript to clone if you prefer automation -->
     </div>
   </div>
-  <script src="courses.js">
-  // Optional: Pause auto-scroll animation on hover
-document.addEventListener("DOMContentLoaded", () => {
-  const gallery = document.querySelector(".gallery-container");
 
-  gallery.addEventListener("mouseenter", () => {
-    gallery.style.animationPlayState = "paused";
-  });
-
-  gallery.addEventListener("mouseleave", () => {
-    gallery.style.animationPlayState = "running";
-  });
-});
-
-// Optional: Smooth scroll buttons (if added later)
-function scrollLeft() {
-  document.querySelector(".gallery-container").scrollBy({
-    left: -300,
-    behavior: "smooth"
-  });
-}
-
-function scrollRight() {
-  document.querySelector(".gallery-container").scrollBy({
-    left: 300,
-    behavior: "smooth"
-  });
-}
-</script>
+  <script>
+    // Optional: Duplicate cards via JS instead of manual copy
+    const track = document.getElementById('gallery-track');
+    track.innerHTML += track.innerHTML; // duplicate content for seamless scroll
+  </script>
 </body>
 </html>
