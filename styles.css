@@ -556,7 +556,7 @@ p {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: url('college-gallery.jpg') no-repeat center center;
+  background: url('UPES.jpg') no-repeat center center;
   background-size: cover;
   z-index: 0;
   opacity: 1;
@@ -571,7 +571,7 @@ p {
   font-size: 12vw;
   font-weight: bold;
   color: transparent;
-  background: url('college-gallery.jpg') no-repeat center center;
+  background: url('UPES.jpg') no-repeat center center;
   background-size: cover;
   -webkit-background-clip: text;
   z-index: 2;
