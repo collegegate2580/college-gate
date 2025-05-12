@@ -537,3 +537,69 @@ p {
 .college-info button:hover {
   background: linear-gradient(to right, #138496, #0c5e6c);
 }
+.scroll-colleges {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.scroll-colleges {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.zoom-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('college-gallery.jpg') no-repeat center center;
+  background-size: cover;
+  z-index: 0;
+  opacity: 1;
+  transition: all 0.5s ease;
+}
+
+.scroll-text {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.5);
+  font-size: 12vw;
+  font-weight: bold;
+  color: transparent;
+  background: url('college-gallery.jpg') no-repeat center center;
+  background-size: cover;
+  -webkit-background-clip: text;
+  z-index: 2;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+/* Mobile adjustments */
+@media (max-width: 767px) {
+  .scroll-text {
+    font-size: 20vw;  /* Adjust font size for smaller screens */
+  }
+
+  .zoom-image {
+    height: 100vh;
+  }
+
+  .scroll-colleges {
+    height: 80vh; /* Adjust for mobile screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .scroll-text {
+    font-size: 24vw;  /* Further adjust for very small screens */
+  }
+  
+  .zoom-image {
+    background-position: center center;
+    background-size: cover;
+  }
+}
