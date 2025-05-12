@@ -3,76 +3,266 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Top Colleges - College Gate</title>
+  <title>Courses - College Gate</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
       color: #fff;
-      padding: 20px;
+      overflow-x: hidden;
     }
+
     h1 {
       text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 30px;
+      font-size: 2.8rem;
+      padding: 30px 10px 10px;
+      color: #00f7ff;
     }
-    .college-list {
+
+    .gallery-container {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding: 20px;
+      scroll-behavior: smooth;
       gap: 20px;
-      justify-content: center;
+      animation: scrollGallery 50s linear infinite;
     }
+
     .college-card {
-      background: #111;
+      flex: 0 0 auto;
+      width: 300px;
+      background: rgba(0, 0, 0, 0.8);
       border-radius: 12px;
       padding: 20px;
-      width: 300px;
+      box-shadow: 0 0 20px rgba(0,255,255,0.2);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 4px 8px rgba(0,255,255,0.2);
     }
+
     .college-card:hover {
-      transform: translateY(-5px) scale(1.03);
-      box-shadow: 0 10px 20px rgba(0,255,255,0.3);
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0,255,255,0.5);
     }
-    .college-card h2 {
+
+    .college-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .college-title {
       font-size: 1.4rem;
+      font-weight: bold;
       color: #00f7ff;
       margin-bottom: 10px;
     }
-    .college-card p {
+
+    .college-info p {
+      margin: 5px 0;
       font-size: 0.95rem;
-      line-height: 1.5;
+    }
+
+    .college-info button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #00f7ff;
+      color: #000;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .college-info button:hover {
+      background-color: #00d3e0;
+    }
+
+    @keyframes scrollGallery {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* Scrollbar Hidden */
+    .gallery-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .gallery-container {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    @media (max-width: 600px) {
+      .gallery-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        animation: none;
+        overflow-x: hidden;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Top Colleges in Dehradun</h1>
-  <div class="college-list">
+  <h1>Explore Top Colleges</h1>
+  <div class="gallery-container">
+    <!-- Repeat this block for each college -->
     <div class="college-card">
-      <h2>UPES Dehradun</h2>
-      <p>Renowned for petroleum, law, and management. Offers excellent placements and industry-aligned programs.</p>
+      <img src="UPES.jpg" alt="UPES">
+      <div class="college-title">UPES</div>
+      <div class="college-info">
+        <p>Courses: B.Tech, MBA</p>
+        <p>Fees: ₹1,00,000/year</p>
+        <p>Top Recruiters: Infosys, Wipro</p>
+        <p>Scholarships Available</p>
+        <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
+      </div>
     </div>
+
     <div class="college-card">
-      <h2>Uttaranchal University</h2>
-      <p>Offers diverse courses in engineering, law, and management. Known for its infrastructure and quality education.</p>
+      <img src="GRD.jpg" alt="GRD">
+      <div class="college-title">GRD</div>
+      <div class="college-info">
+        <p>Courses: B.Tech, MBA</p>
+        <p>Fees: ₹2,00,000/year</p>
+        <p>Top Recruiters: Infosys, Wipro</p>
+        <p>Scholarships Available</p>
+       
+        <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
+      </div>
     </div>
+
     <div class="college-card">
-      <h2>GRD Institute</h2>
-      <p>Known for engineering, pharmacy, and management. Focuses on skill-based training and innovation.</p>
+      <img src="dev bhoomi.jpg" alt="Dev Bhoomi">
+      <div class="college-title">Dev Bhoomi</div>
+      <div class="college-info">
+        <p>Courses: B.Tech, MBA</p>
+        <p>Fees: ₹2,00,000/year</p>
+        <p>Top Recruiters: Infosys, Wipro</p>
+        <p>Scholarships Available</p>
+        <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
+      </div>
     </div>
+
     <div class="college-card">
-      <h2>Dev Bhoomi Uttarakhand University</h2>
-      <p>A comprehensive university offering technology, health sciences, and agriculture programs with good placements.</p>
+      <img src="maya devi.jpg" alt="Maya Devi">
+      <div class="college-title">Maya Devi</div>
+      <div class="college-info">
+        <p>Courses: B.Tech, MBA</p>
+        <p>Fees: ₹2,00,000/year</p>
+        <p>Top Recruiters: Infosys, Wipro</p>
+        <p>Scholarships Available</p>
+        <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
+      </div>
     </div>
+
     <div class="college-card">
-      <h2>Sai Group of Institutions</h2>
-      <p>Strong in health sciences, management, and paramedical programs. Affordable and career-oriented education.</p>
+      <img src="sai group.png" alt="Sai Group">
+      <div class="college-title">Sai Group Of Institutions</div>
+      <div class="college-info">
+        <p>Courses: B.Tech, MBA</p>
+        <p>Fees: ₹2,00,000/year</p>
+        <p>Top Recruiters: Infosys, Wipro</p>
+        <p>Scholarships Available</p>
+        <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
+      </div>
     </div>
+
     <div class="college-card">
-      <h2>COER (College of Engineering Roorkee)</h2>
-      <p>One of the oldest and reputed private engineering colleges in the region. High-end labs and placement support.</p>
+      <img src="COER.jpg" alt="COER">
+      <div class="college-title">COER</div>
+      <div class="college-info">
+        <p>Courses: B.Tech, MBA</p>
+        <p>Fees: ₹2,00,000/year</p>
+        <p>Top Recruiters: Infosys, Wipro</p>
+        <p>Scholarships Available</p>
+        <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
+      </div>
+    </div>
+
+    <div class="college-card">
+      <img src="subharti.jpg" alt="Subharti University">
+      <div class="college-title">Subharti University</div>
+      <div class="college-info">
+        <p>Courses: B.Tech, MBA</p>
+        <p>Fees: ₹2,00,000/year</p>
+        <p>Top Recruiters: Infosys, Wipro</p>
+        <p>Scholarships Available</p>
+        <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
+      </div>
+    </div>
+
+    <div class="college-card">
+      <img src="uttanchal university.jpg" alt="Uttaranchal University">
+      <div class="college-title">Uttaranchal University</div>
+      <div class="college-info">
+        <p>Courses: B.Tech, MBA</p>
+        <p>Fees: ₹2,00,000/year</p>
+        <p>Top Recruiters: Infosys, Wipro</p>
+        <p>Scholarships Available</p>
+        <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
+      </div>
+    </div>
+
+    <div class="college-card">
+      <img src="JBIT.jpg" alt="JBIT">
+      <div class="college-title">JBIT</div>
+      <div class="college-info">
+        <p>Courses: B.Tech, MBA</p>
+        <p>Fees: ₹2,00,000/year</p>
+        <p>Top Recruiters: Infosys, Wipro</p>
+        <p>Scholarships Available</p>
+        <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
+      </div>
+    </div>
+
+    <div class="college-card">
+      <img src="jigyasa.jpg" alt="Jigyasa University">
+      <div class="college-title">Jigyasa University</div>
+      <div class="college-info">
+        <p>Courses: B.Tech, MBA</p>
+        <p>Fees: ₹2,00,000/year</p>
+        <p>Top Recruiters: Infosys, Wipro</p>
+        <p>Scholarships Available</p>
+        <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
+      </div>
     </div>
   </div>
+  <script src="courses.js">
+  // Optional: Pause auto-scroll animation on hover
+document.addEventListener("DOMContentLoaded", () => {
+  const gallery = document.querySelector(".gallery-container");
+
+  gallery.addEventListener("mouseenter", () => {
+    gallery.style.animationPlayState = "paused";
+  });
+
+  gallery.addEventListener("mouseleave", () => {
+    gallery.style.animationPlayState = "running";
+  });
+});
+
+// Optional: Smooth scroll buttons (if added later)
+function scrollLeft() {
+  document.querySelector(".gallery-container").scrollBy({
+    left: -300,
+    behavior: "smooth"
+  });
+}
+
+function scrollRight() {
+  document.querySelector(".gallery-container").scrollBy({
+    left: 300,
+    behavior: "smooth"
+  });
+}
+</script>
 </body>
 </html>
