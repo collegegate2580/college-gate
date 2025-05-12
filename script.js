@@ -63,3 +63,9 @@ document.querySelectorAll('.college-card').forEach(card => {
     card.classList.remove('show-info');
   });
 });
+
+function toggleMenu() {
+  const navbar = document.getElementById("navbar");
+  navbar.classList.toggle("show");
+}
+
