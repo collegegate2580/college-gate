@@ -473,7 +473,8 @@ p {
   max-width: 700px;
   margin: 30px auto;
   padding: 20px;
-  background-color: #fff;
+   background: conic-gradient(from 180deg, transparent, #00eaff99, transparent);
+  animation: rotateGlow 6s linear infinite;
   border-radius: 12px;
   border: 1px solid #ccc;
   cursor: pointer;
@@ -482,8 +483,9 @@ p {
 }
 
 .college-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-15px) scale(1.03);
+   box-shadow: 0 0 25px #00eaff88, 0 0 10px #00eaff44;
+  z-index: 2;
 }
 
 .college-title {
