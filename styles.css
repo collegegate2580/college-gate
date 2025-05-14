@@ -83,7 +83,9 @@ nav ul li a:hover {
 }
 .hero h1 {
   font-size: 3rem;
-  margin-bottom: 10px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  animation: textAnimation 3s infinite alternate;
 }
 .hero span {
   color: #00f7ff;
