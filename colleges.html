@@ -138,12 +138,33 @@
         animation: none;
       }
     }
+    .back-button {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  background-color: #00f7ff;
+  color: #000;
+  border: none;
+  padding: 10px 16px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  z-index: 101;
+}
+
+.back-button:hover {
+  background-color: #00d3e0;
+}
+
   </style>
 </head>
 <body>
   <header>
     <img src="logo.jpg" alt="College Gate Logo" />
-    
+    <button class="back-button" onclick="history.back()">← Back</button>
+
   </header>
 
 <body>
