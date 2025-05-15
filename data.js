@@ -1,17 +1,15 @@
-
-
 // College Data
 const colleges = [
     {
       id: 1,
-      name: "Indian Institute of Technology Roorkee",
-      shortName: "IIT Roorkee",
+      name: "COER University, ROORKEE",
+      shortName: "Coer",
       logo: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1000&auto=format&fit=crop",
       established: "1847",
       type: "Government",
       affiliation: "Autonomous",
       rating: 4.8,
-      location: "Roorkee, Dehradun",
+      location: "Roorkee,",
       courses: [
         { name: "B.Tech Computer Science", duration: "4 Years", fees: 220000, seats: 120 },
         { name: "B.Tech Mechanical Engineering", duration: "4 Years", fees: 220000, seats: 100 },
@@ -28,14 +26,14 @@ const colleges = [
     },
     {
       id: 2,
-      name: "Graphic Era University",
-      shortName: "GEU",
+      name: "University of Petroleum and Energy Studies",
+      shortName: "UPES",
       logo: "https://images.unsplash.com/photo-1581362072978-14998d01fdce?q=80&w=1000&auto=format&fit=crop",
       established: "1993",
       type: "Private",
       affiliation: "UGC",
       rating: 4.5,
-      location: "Clement Town, Dehradun",
+      location: "Prem nagar, Dehradun",
       courses: [
         { name: "B.Tech Computer Science", duration: "4 Years", fees: 160000, seats: 180 },
         { name: "BBA", duration: "3 Years", fees: 120000, seats: 120 },
@@ -52,8 +50,8 @@ const colleges = [
     },
     {
       id: 3,
-      name: "Dehradun Institute of Technology",
-      shortName: "DIT",
+      name: "Dev Bhoomi Institute of Technology",
+      shortName: "DBIT",
       logo: "https://images.unsplash.com/photo-1535982330050-f1c2fb79ff78?q=80&w=1000&auto=format&fit=crop",
       established: "1998",
       type: "Private",
@@ -75,8 +73,8 @@ const colleges = [
     },
     {
       id: 4,
-      name: "Doon University",
-      shortName: "Doon",
+      name: "Sai Group of Institutions",
+      shortName: "SGI",
       logo: "https://images.unsplash.com/photo-1592280771190-3e2e4d977758?q=80&w=1000&auto=format&fit=crop",
       established: "2005",
       type: "State Government",
@@ -103,7 +101,7 @@ const colleges = [
   const counsellingDates = [
     {
       id: 1,
-      college: "IIT Roorkee",
+      college: "COER Roorkee",
       date: "July 15, 2024",
       time: "10:00 AM - 4:00 PM",
       venue: "Main Campus, Roorkee",
@@ -113,17 +111,17 @@ const colleges = [
     },
     {
       id: 2,
-      college: "Graphic Era University",
+      college: "UPES",
       date: "June 25, 2024",
       time: "9:00 AM - 5:00 PM",
-      venue: "GEU Campus, Bell Road",
+      venue: "UPES Campus, Bell Road",
       eligibility: "10+2 with 60% marks in PCM",
       contactPerson: "Dr. Rajesh Kumar",
       contactEmail: "admissions@geu.ac.in"
     },
     {
       id: 3,
-      college: "Dehradun Institute of Technology",
+      college: "DEv bhoomi Institute of Technology",
       date: "July 5, 2024",
       time: "10:00 AM - 3:00 PM",
       venue: "DIT Auditorium",
@@ -133,7 +131,7 @@ const colleges = [
     },
     {
       id: 4,
-      college: "Doon University",
+      college: "Sai Group of Institutions",
       date: "July 20, 2024",
       time: "11:00 AM - 4:00 PM",
       venue: "Main Campus, Kedarpur",
