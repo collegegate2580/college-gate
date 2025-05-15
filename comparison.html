@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="Compare College Fees - CollegeGate Dehradun">
+  <meta property="og:description" content="Compare fees of top colleges in Dehradun. Make informed decisions based on course fees and facilities.">
+  <link rel="shortcut icon" href="https://mocha-cdn.com/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css">
+  <title>Compare College Fees - CollegeGate Dehradun</title>
+  <style>
+    /* Fee Comparison Page Specific Styles */
+    .comparison-hero {
+      background: linear-gradient(to right, #f0f5ff, #e6e9ff);
+      border-radius: 0.75rem;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .comparison-hero::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: rgba(79, 70, 229, 0.1);
+      z-index: 0;
+    }
+    
+    .comparison-hero h1, 
+    .comparison-hero p {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .comparison-filters {
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+    }
+    
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+    
+    .filter-group {
+      flex: 1;
+      min-width: 200px;
+    }
+    
+    .filter-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      font-size: 0.875rem;
+      color: var(--text-primary);
+    }
+    
+    .filter-select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid var(--gray-300);
+      border-radius: 0.375rem;
+      font-size: 0.875rem;
+      transition: all 0.3s ease;
+    }
+    
+    .filter-select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+    
+    .compare-btn {
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 0.375rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .compare-btn:hover {
+      background-color: var(--primary-dark);
+    }
+    
+    .comparison-table-container {
+      overflow-x: auto;
+      background-color: white;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+    }
+    
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    
+    .comparison-table th {
+      background-color: var(--gray-100);
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    
+    .comparison-table th.feature-col {
+      width: 200px;
+    }
+    
+    .comparison-table th.college-col {
+      width: 250px;
+    }
+    
+    .comparison-table tr:hover {
+      background-color: var(--gray-50);
+    }
+    
+    .college-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    
+    .college-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    
+    .college-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .college-name {
+      font-weight: 600;
+    }
+    
+    .fee-amount {
+      font-weight: 600;
+      color: var(--primary);
+    }
+    
+    .chart-container {
+      margin-top: 2rem;
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .chart-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+    
+    .chart {
+      height: 400px;
+      position: relative;
+    }
+    
+    .bar-container {
+      display: flex;
+      height: 100%;
+      padding-top: 1.5rem;
+      align-items: flex-end;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    
+    .chart-bar {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: growUp 1s ease-out forwards;
+      transform-origin: bottom;
+    }
+    
+    .bar {
+      width: 80px;
+      background: linear-gradient(to top, var(--primary), #3b82f6);
+      border-radius: 6px 6px 0 0;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .bar:hover {
+      filter: brightness(1.1);
+    }
+    
+    .bar-label {
+      font-weight: 500;
+      margin-top: 0.5rem;
+      text-align: center;
+      font-size: 0.875rem;
+    }
+    
+    .bar-value {
+      position: absolute;
+      top: -2rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    
+    .chart-y-axis {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-right: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--gray-500);
+    }
+    
+    .chart-x-axis {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      background-color: var(--gray-300);
+    }
+    
+    .actions-bar {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .action-btn {
+      padding: 0.5rem 1rem;
+      background-color: var(--white);
+      border: 1px solid var(--gray-300);
+      border-radius: 0.375rem;
+      font-size: 0.875rem;
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .action-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    
+    .info-section {
+      margin-top: 3rem;
+    }
+    
+    .info-card {
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .info-card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+    
+    .tips-list {
+      margin-left: 1.5rem;
+    }
+    
+    .tips-list li {
+      margin-bottom: 0.75rem;
+      position: relative;
+      padding-left: 0.5rem;
+    }
+    
+    .tips-list li::before {
+      content: '•';
+      position: absolute;
+      left: -1rem;
+      color: var(--primary);
+      font-weight: bold;
+    }
+    
+    /* Animation effects */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease forwards;
+    }
+    
+    .fade-in-delay-1 {
+      animation-delay: 0.2s;
+    }
+    
+    .fade-in-delay-2 {
+      animation-delay: 0.4s;
+    }
+    
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes growUp {
+      from {
+        transform: scaleY(0);
+      }
+      to {
+        transform: scaleY(1);
+      }
+    }
+    
+    /* Responsive adaptations */
+    @media screen and (max-width: 768px) {
+      .filter-row {
+        flex-direction: column;
+      }
+      
+      .filter-group {
+        width: 100%;
+      }
+      
+      .bar {
+        width: 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header" id="header">
+    <div class="container">
+      <div class="header-content">
+        <a href="index.html" class="logo">
+          College<span>Gate</span>
+        </a>
+        
+        <nav class="main-nav" id="main-nav">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="colleges.html" class="nav-link">Colleges</a>
+          <a href="counselling.html" class="nav-link">Counselling</a>
+          <a href="comparison.html" class="nav-link active">Compare Fees</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+        
+        <div class="nav-actions">
+          <button class="btn-primary">Get Assistance</button>
+        </div>
+        
+        <button class="mobile-menu-btn" id="menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="pt-24 pb-16">
+      <div class="container">
+        <!-- Hero Section -->
+        <section class="comparison-hero fade-in">
+          <div class="max-w-3xl">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">
+              Compare College Fees
+            </h1>
+            <p class="text-lg text-slate-700 mb-0">
+              Compare tuition fees and other costs across different colleges in Dehradun to make an informed financial decision.
+            </p>
+          </div>
+        </section>
+        
+        <!-- Comparison Filters -->
+        <section class="comparison-filters fade-in fade-in-delay-1">
+          <div class="filter-row">
+            <div class="filter-group">
+              <label for="course-filter">Select Course</label>
+              <select id="course-filter" class="filter-select">
+                <option value="B.Tech">B.Tech</option>
+                <option value="MBA">MBA</option>
+                <option value="BBA">BBA</option>
+                <option value="MSc">M.Sc</option>
+                <option value="MA">MA</option>
+              </select>
+            </div>
+            
+            <div class="filter-group">
+              <label for="college-filter">Select Colleges</label>
+              <select id="college-filter" class="filter-select" multiple size="4">
+                <option value="1" selected>IIT Roorkee</option>
+                <option value="2" selected>Graphic Era University</option>
+                <option value="3" selected>Dehradun Institute of Technology</option>
+                <option value="4" selected>Doon University</option>
+              </select>
+            </div>
+            
+            <div class="filter-group">
+              <label for="fee-type">Fee Type</label>
+              <select id="fee-type" class="filter-select">
+                <option value="tuition">Tuition Fee</option>
+                <option value="total">Total Fee (incl. Hostel)</option>
+                <option value="semester">Per Semester Fee</option>
+              </select>
+            </div>
+          </div>
+          
+          <button id="compare-btn" class="compare-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>
+            Compare Fees
+          </button>
+        </section>
+        
+        <!-- Actions Bar -->
+        <div class="actions-bar fade-in fade-in-delay-1">
+          <button class="action-btn" id="download-pdf">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Download as PDF
+          </button>
+          
+          <button class="action-btn" id="share-comparison">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+            Share Comparison
+          </button>
+        </div>
+        
+        <!-- Comparison Table -->
+        <div class="comparison-table-container fade-in fade-in-delay-2">
+          <table class="comparison-table" id="comparison-table">
+            <thead>
+              <tr>
+                <th class="feature-col">Feature</th>
+                <th class="college-col">
+                  <div class="college-header">
+                    <div class="college-logo">
+                      <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1000&auto=format&fit=crop" alt="IIT Roorkee">
+                    </div>
+                    <div class="college-name">IIT Roorkee</div>
+                  </div>
+                </th>
+                <th class="college-col">
+                  <div class="college-header">
+                    <div class="college-logo">
+                      <img src="https://images.unsplash.com/photo-1581362072978-14998d01fdce?q=80&w=1000&auto=format&fit=crop" alt="Graphic Era University">
+                    </div>
+                    <div class="college-name">Graphic Era University</div>
+                  </div>
+                </th>
+                <th class="college-col">
+                  <div class="college-header">
+                    <div class="college-logo">
+                      <img src="https://images.unsplash.com/photo-1535982330050-f1c2fb79ff78?q=80&w=1000&auto=format&fit=crop" alt="DIT">
+                    </div>
+                    <div class="college-name">DIT</div>
+                  </div>
+                </th>
+                <th class="college-col">
+                  <div class="college-header">
+                    <div class="college-logo">
+                      <img src="https://images.unsplash.com/photo-1592280771190-3e2e4d977758?q=80&w=1000&auto=format&fit=crop" alt="Doon University">
+                    </div>
+                    <div class="college-name">Doon University</div>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Tuition Fee (per year)</td>
+                <td class="fee-amount">₹2,20,000</td>
+                <td class="fee-amount">₹1,60,000</td>
+                <td class="fee-amount">₹1,40,000</td>
+                <td class="fee-amount">₹80,000</td>
+              </tr>
+              <tr>
+                <td>Hostel Fee (per year)</td>
+                <td class="fee-amount">₹50,000</td>
+                <td class="fee-amount">₹45,000</td>
+                <td class="fee-amount">₹40,000</td>
+                <td class="fee-amount">₹35,000</td>
+              </tr>
+              <tr>
+                <td>Mess Fee (per year)</td>
+                <td class="fee-amount">₹48,000</td>
+                <td class="fee-amount">₹42,000</td>
+                <td class="fee-amount">₹40,000</td>
+                <td class="fee-amount">₹36,000</td>
+              </tr>
+              <tr>
+                <td>Development Fee</td>
+                <td class="fee-amount">₹10,000</td>
+                <td class="fee-amount">₹15,000</td>
+                <td class="fee-amount">₹12,000</td>
+                <td class="fee-amount">₹8,000</td>
+              </tr>
+              <tr>
+                <td>Caution Money (Refundable)</td>
+                <td class="fee-amount">₹10,000</td>
+                <td class="fee-amount">₹8,000</td>
+                <td class="fee-amount">₹8,000</td>
+                <td class="fee-amount">₹5,000</td>
+              </tr>
+              <tr>
+                <td>Examination Fee</td>
+                <td class="fee-amount">₹5,000</td>
+                <td class="fee-amount">₹6,000</td>
+                <td class="fee-amount">₹5,000</td>
+                <td class="fee-amount">₹4,000</td>
+              </tr>
+              <tr>
+                <td>Total First Year Fee</td>
+                <td class="fee-amount">₹3,43,000</td>
+                <td class="fee-amount">₹2,76,000</td>
+                <td class="fee-amount">₹2,45,000</td>
+                <td class="fee-amount">₹1,68,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <!-- Chart Section -->
+        <div class="chart-container fade-in">
+          <h3 class="chart-title">Tuition Fee Comparison Chart (B.Tech)</h3>
+          
+          <div class="chart">
+            <div class="chart-y-axis">
+              <span>₹2.5L</span>
+              <span>₹2.0L</span>
+              <span>₹1.5L</span>
+              <span>₹1.0L</span>
+              <span>₹0.5L</span>
+              <span>₹0</span>
+            </div>
+            
+            <div class="chart-x-axis"></div>
+            
+            <div class="bar-container">
+              <div class="chart-bar">
+                <div class="bar" style="height: 88%;">
+                  <span class="bar-value">₹2.2L</span>
+                </div>
+                <div class="bar-label">IIT Roorkee</div>
+              </div>
+              
+              <div class="chart-bar">
+                <div class="bar" style="height: 64%;">
+                  <span class="bar-value">₹1.6L</span>
+                </div>
+                <div class="bar-label">Graphic Era</div>
+              </div>
+              
+              <div class="chart-bar">
+                <div class="bar" style="height: 56%;">
+                  <span class="bar-value">₹1.4L</span>
+                </div>
+                <div class="bar-label">DIT</div>
+              </div>
+              
+              <div class="chart-bar">
+                <div class="bar" style="height: 32%;">
+                  <span class="bar-value">₹0.8L</span>
+                </div>
+                <div class="bar-label">Doon Univ.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Info Section -->
+        <section class="info-section">
+          <div class="info-card fade-in">
+            <h3>Understanding College Fees</h3>
+            <p>
+              College fees can vary significantly based on the type of institution, courses offered, infrastructure, facilities, and reputation. Here are some tips to help you understand and compare college fees effectively:
+            </p>
+            <ul class="tips-list">
+              <li>
+                <strong>Look beyond tuition fees:</strong> Consider other expenses like hostel fees, mess charges, transportation, books, and miscellaneous expenses when calculating the total cost of education.
+              </li>
+              <li>
+                <strong>Check for scholarships and financial aid:</strong> Many colleges offer merit-based scholarships, need-based financial aid, and fee waivers. Research these options to reduce your financial burden.
+              </li>
+              <li>
+                <strong>Understand fee payment structure:</strong> Some colleges allow fee payment in installments. Understand the payment schedule to plan your finances accordingly.
+              </li>
+              <li>
+                <strong>Consider return on investment:</strong> Higher fees might be justified if the college has excellent placement records, industry connections, and alumni networks that can help boost your career prospects.
+              </li>
+              <li>
+                <strong>Be aware of hidden costs:</strong> Some colleges may charge additional fees for laboratory usage, library services, sports facilities, etc. Make sure to inquire about all such charges.
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3 class="footer-logo">College<span>Gate</span></h3>
+          <p>
+            Your comprehensive guide to colleges in Dehradun.
+            Get information about fees, admission process, and counselling.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+            </a>
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="colleges.html">Colleges</a></li>
+            <li><a href="counselling.html">Counselling</a></li>
+            <li><a href="comparison.html">Compare Fees</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Top Colleges</h3>
+          <ul class="footer-links">
+            <li><a href="#">IIT Roorkee</a></li>
+            <li><a href="#">Graphic Era University</a></li>
+            <li><a href="#">Dehradun Institute of Technology</a></li>
+            <li><a href="#">Doon University</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Contact Us</h3>
+          <div class="contact-info">
+            <p>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              123, Rajpur Road, Dehradun, Uttarakhand - 248001
+            </p>
+            <p>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              +91 135 2741487
+            </p>
+            <p>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              info@collegegate.com
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; <span id="current-year"></span> CollegeGate. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/data.js"></script>
+  <script src="./js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Comparison functionality
+      const compareBtn = document.getElementById('compare-btn');
+      compareBtn.addEventListener('click', updateComparison);
+      
+      function updateComparison() {
+        // In a real application, this would fetch and update the data based on filters
+        alert('Comparison updated!');
+        
+        // Animate bars
+        const bars = document.querySelectorAll('.bar');
+        bars.forEach(bar => {
+          bar.style.height = '0';
+          setTimeout(() => {
+            bar.style.height = bar.getAttribute('data-height') || '50%';
+          }, 100);
+        });
+      }
+      
+      // Download PDF functionality
+      const downloadBtn = document.getElementById('download-pdf');
+      downloadBtn.addEventListener('click', function() {
+        alert('PDF download functionality would be implemented here in a real application.');
+      });
+      
+      // Share functionality
+      const shareBtn = document.getElementById('share-comparison');
+      shareBtn.addEventListener('click', function() {
+        alert('Share functionality would be implemented here in a real application.');
+      });
+      
+      // Animation on scroll
+      const fadeElements = document.querySelectorAll('.fade-in');
+      
+      function checkFade() {
+        fadeElements.forEach(element => {
+          const elementTop = element.getBoundingClientRect().top;
+          const windowHeight = window.innerHeight;
+          
+          if (elementTop < windowHeight - 100) {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+          }
+        });
+      }
+      
+      // Initial check
+      checkFade();
+      
+      // Check on scroll
+      window.addEventListener('scroll', checkFade);
+    });
+  </script>
+</body>
+</html>
