@@ -1,309 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>COLLEGE GATE</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="UniGate Dehradun">
   <link rel="stylesheet" href="styles.css" />
- <!-- AOS CSS -->
-<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+  <meta property="og:description" content="Explore top Dehradun colleges: fees, counseling &amp; more with stunning animations at UniGate Dehradun!">
+  <meta property="og:image" content="https://mocha-cdn.com/og.png" type="image/png">
+  <meta property="og:url" content="https://2jm2axv34tzvw.mocha.app">
+  <meta property="og:type" content="website">
+  <meta property="og:author" content="Mocha">
+  <meta property="og:site_name" content="UniGate Dehradun">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:site" content="@buildwithmocha">
+  <meta property="twitter:title" content="UniGate Dehradun">
+  <meta property="twitter:description" content="Explore top Dehradun colleges: fees, counseling &amp; more with stunning animations at UniGate Dehradun!">
+  <meta property="twitter:image" content="https://mocha-cdn.com/og.png" type="image/png">
+  <link rel="shortcut icon" href="https://mocha-cdn.com/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://mocha-cdn.com/apple-touch-icon.png" type="image/png">
+  <link rel="stylesheet" href="./css/styles.css">
+  <title>CollegeGate Dehradun</title>
 </head>
 <body>
-
-  <header>
-    <div class="logo-container">
-      <div class="logo-text">COLLEGE GATE</div>
-       <div class="hamburger" onclick="toggleMenu()">☰</div>
-      <img src="logo.jpg" class="logo-img" alt="Logo" />
+  <header class="header" id="header">
+    <div class="container">
+      <div class="header-content">
+        <a href="index.html" class="logo">
+          College<span>Gate</span>
+        </a>
+        
+        <nav class="main-nav" id="main-nav">
+          <a href="index.html" class="nav-link active">Home</a>
+          <a href="colleges.html" class="nav-link">Colleges</a>
+          <a href="counselling.html" class="nav-link">Counselling</a>
+          <a href="comparison.html" class="nav-link">Compare Fees</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+        
+        <div class="nav-actions">
+          <button class="btn-primary">Get Assistance</button>
+        </div>
+        
+        <button class="mobile-menu-btn" id="menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
-   
-    
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="colleges.html">Colleges</a></li>
-        <li><a href="courses.html">Courses</a></li>
-        <li><a href="fees.html">Fees Structure</a></li>
-        <li><a href="impact.html">Our Impact</a></li>
-        <li><a href="testimonials.html">Testimonials</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-
-     
-    
   </header>
- 
-  <section class="hero" id="home">
-    <div class="hero-content" data-aos="zoom-in">
-      <h1 data-aos="fade-down">Welcome to <span>COLLEGE GATE</span></h1>
-      <p data-aos="fade-up">Explore top colleges, courses, and fees – all in one place.</p>
-      <a href="#colleges" class="btn" data-aos="zoom-in-up">Get Started</a>
-    </div>
-  </section>
-  <section class="search-explore" data-aos="fade-left">
-    <h2>Search and Explore India's Top Colleges</h2>
-    <input type="text" id="collegeSearch" placeholder="Search for colleges...">
-  </section>
-  <section class="tagline" data-aos="fade-up">
-    <h1>From confusion to clarity, we help you choose wisely</h1>
-  </section>
-  <section class="why-choose" data-aos="fade-right">
-    <h2>Why Choose College Gate</h2>
-    <p>We provide expert counseling, comprehensive college information, and personalized guidance to help you make informed decisions.</p>
-    <button class="counseling-btn">Get Counseling</button>
-  </section>
-  <section class="colleges-list" data-aos="fade-up">
-    <h2>Top Colleges</h2>
 
-
- 
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-bg">
+        <div class="bg-blob bg-blob-1"></div>
+        <div class="bg-blob bg-blob-2"></div>
+      </div>
+      
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1 class="hero-title">Discover the Best <span>Colleges</span> in Dehradun</h1>
+            <p class="hero-subtitle">
+              Find comprehensive information about colleges, fees, courses, and admission counselling to make informed decisions about your education.
+            </p>
+            <div class="hero-buttons">
+              <a href="colleges.html" class="btn-primary">Explore Colleges</a>
+              <a href="counselling.html" class="btn-secondary">Get Counselling</a>
+            </div>
+          </div>
+          
+          <div class="hero-image">
+            <div class="hero-image-container">
+              <div class="image-decoration image-decoration-1"></div>
+              <div class="image-decoration image-decoration-2"></div>
+              <img 
+                src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1000"
+                alt="University Campus">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     
+    <!-- Search Section -->
+    <section class="search-section">
+      <div class="container">
+        <div class="search-box">
+          <h2>Find Your Ideal College</h2>
+          <form class="search-form" id="college-search-form">
+            <div class="form-group">
+              <label>College Name</label>
+              <input type="text" placeholder="e.g. IIT Roorkee">
+            </div>
+            <div class="form-group">
+              <label>Course</label>
+              <select>
+                <option value="">All Courses</option>
+                <option value="btech">B.Tech</option>
+                <option value="mba">MBA</option>
+                <option value="bba">BBA</option>
+                <option value="msc">M.Sc.</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Fee Range</label>
+              <select>
+                <option value="">Any</option>
+                <option value="0-100000">Below ₹1 Lakh</option>
+                <option value="100000-200000">₹1 Lakh - ₹2 Lakh</option>
+                <option value="200000-500000">₹2 Lakh - ₹5 Lakh</option>
+                <option value="500000+">Above ₹5 Lakh</option>
+              </select>
+            </div>
+            <button type="submit" class="btn-primary search-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              Search Colleges
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
     
-  
-    <div class="college-card" data-college="UPES">
-      <div class="college-title">UPES</div>
-      <div class="college-info">
-        <img src="UPES.jpg" alt="UPES">
-        <p>Courses: B.Tech, MBA</p>
-        <p>Fees: ₹1,00,000/year</p>
-        <p>Top Recruiters: Infosys, Wipro</p>
-        <p>Scholarships Available</p>
-        <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
+    <!-- Featured Colleges -->
+    <section class="section featured-colleges">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Featured Colleges</h2>
+          <a href="colleges.html" class="view-all">
+            View All 
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+        
+        <div class="college-grid" id="featured-colleges">
+          <!-- College cards will be inserted here by JavaScript -->
+        </div>
+      </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="section features-section">
+      <div class="container">
+        <h2 class="section-title">Why Choose CollegeGate?</h2>
+        
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><path d="M9 15V9h6v6"></path><path d="M9 9l6 6"></path></svg>
+            </div>
+            <h3>Comprehensive College Database</h3>
+            <p>
+              Access detailed information about all major colleges in Dehradun, including facilities, courses, and fees.
+            </p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            </div>
+            <h3>Counselling Sessions</h3>
+            <p>
+              Schedule personalized counselling sessions with experienced advisors to help guide your college decision.
+            </p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+            </div>
+            <h3>Admission Guidance</h3>
+            <p>
+              Get step-by-step guidance on application processes, important dates, and document requirements.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="section faq-section">
+      <div class="container">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        
+        <div class="faq-container" id="faq-container">
+          <!-- FAQs will be inserted here by JavaScript -->
+        </div>
+      </div>
+    </section>
+    
+    <!-- Call to Action -->
+    <section class="cta-section">
+      <div class="container">
+        <h2>Ready to Find Your Perfect College?</h2>
+        <p>
+          Start your educational journey today with CollegeGate. We're here to help you make the right choice for your future.
+        </p>
+        <div class="cta-buttons">
+          <a href="colleges.html" class="btn-light">Explore Colleges</a>
+          <a href="contact.html" class="btn-outline">Contact Us</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3 class="footer-logo">College<span>Gate</span></h3>
+          <p>
+            Your comprehensive guide to colleges in Dehradun.
+            Get information about fees, admission process, and counselling.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+            </a>
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="colleges.html">Colleges</a></li>
+            <li><a href="counselling.html">Counselling</a></li>
+            <li><a href="comparison.html">Compare Fees</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Top Colleges</h3>
+          <ul class="footer-links">
+            <li><a href="#">IIT Roorkee</a></li>
+            <li><a href="#">Graphic Era University</a></li>
+            <li><a href="#">Dehradun Institute of Technology</a></li>
+            <li><a href="#">Doon University</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Contact Us</h3>
+          <div class="contact-info">
+            <p>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              123, Rajpur Road, Dehradun, Uttarakhand - 248001
+            </p>
+            <p>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              +91 135 2741487
+            </p>
+            <p>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              info@collegegate.com
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; <span id="current-year"></span> CollegeGate. All rights reserved.</p>
       </div>
     </div>
-  
-    <div class="college-card" data-college="GRD">
-      <div class="college-title">GRD</div>
-      <div class="college-info">
-        <img src="GRD.jpg" alt="GRD">
-        <p>Courses: B.Tech, MBA</p>
-        <p>Fees: ₹2,00,000/year</p>
-        <p>Top Recruiters: Infosys, Wipro</p>
-        <p>Scholarships Available</p>
-        <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
-      </div>
-    </div>
+  </footer>
 
-    <div class="college-card" data-college="DEV Bhoomi">
-      <div class="college-title">Dev Bhoomi</div>
-      <div class="college-info">
-        <img src="dev bhoomi.jpg" alt="DEV Bhoomi">
-        <p>Courses: B.Tech, MBA</p>
-        <p>Fees: ₹2,00,000/year</p>
-        <p>Top Recruiters: Infosys, Wipro</p>
-        <p>Scholarships Available</p>
-        <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
-      </div>
-    </div>
-
-    <div class="college-card" data-college="Maya Devi">
-      <div class="college-title">Maya Devi</div>
-      <div class="college-info">
-        <img src="maya devi.jpg" alt="maya Devi">
-        <p>Courses: B.Tech, MBA</p>
-        <p>Fees: ₹2,00,000/year</p>
-        <p>Top Recruiters: Infosys, Wipro</p>
-        <p>Scholarships Available</p>
-        <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
-      </div>
-    </div>
-
-    <div class="college-card" data-college="Sai group OF Institution">
-      <div class="college-title">Sai Group Of Institution</div>
-      <div class="college-info">
-        <img src="sai group.png" alt="Sai Group Of Instituiton">
-        <p>Courses: B.Tech, MBA</p>
-        <p>Fees: ₹2,00,000/year</p>
-        <p>Top Recruiters: Infosys, Wipro</p>
-        <p>Scholarships Available</p>
-        <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
-      </div>
-    </div>
-
-    <div class="college-card" data-college="COER">
-      <div class="college-title">COER</div>
-      <div class="college-info">
-        <img src="COER.jpg" alt="COER">
-        <p>Courses: B.Tech, MBA</p>
-        <p>Fees: ₹2,00,000/year</p>
-        <p>Top Recruiters: Infosys, Wipro</p>
-        <p>Scholarships Available</p>
-        <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
-      </div>
-    </div>
-
-    <div class="college-card" data-college="Subharti university">
-      <div class="college-title">Subharti University</div>
-      <div class="college-info">
-        <img src="subharti.jpg" alt="Subharti university">
-        <p>Courses: B.Tech, MBA</p>
-        <p>Fees: ₹2,00,000/year</p>
-        <p>Top Recruiters: Infosys, Wipro</p>
-        <p>Scholarships Available</p>
-        <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
-      </div>
-    </div>
-
-    <div class="college-card" data-college="uttranchal University">
-      <div class="college-title">Uttranchal University</div>
-      <div class="college-info">
-        <img src="uttanchal university.jpg" alt="uttranchal University">
-        <p>Courses: B.Tech, MBA</p>
-        <p>Fees: ₹2,00,000/year</p>
-        <p>Top Recruiters: Infosys, Wipro</p>
-        <p>Scholarships Available</p>
-        <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
-      </div>
-    </div>
-
-    <div class="college-card" data-college="JBIT">
-      <div class="college-title">JBIT</div>
-      <div class="college-info">
-        <img src="JBIT.jpg" alt="JBIT">
-        <p>Courses: B.Tech, MBA</p>
-        <p>Fees: ₹2,00,000/year</p>
-        <p>Top Recruiters: Infosys, Wipro</p>
-        <p>Scholarships Available</p>
-        <button onclick="window.location.href='tel:+91 91939 93693'">Apply Now</button>
-      </div>
-    </div>
-  
-    <div class="college-card" data-college="Jigyasa University">
-      <div class="college-title">Jigyasa University</div>
-      <div class="college-info">
-        <img src="jigyasa.jpg" alt="Jigyasa university">
-        <p>Courses: B.Tech, MBA</p>
-        <p>Fees: ₹2,00,000/year</p>
-        <p>Top Recruiters: Infosys, Wipro</p>
-        <p>Scholarships Available</p>
-        <button onclick="location.href='#need-counseling'">Apply Now</button>
-      </div>
-    </div>
-    <!-- Add more college cards similarly -->
-  </section>
-  
-
-  <section id="courses" data-aos="fade-right">
-    <h2>Courses</h2>
-    <div class="feature-container">
-      <div class="feature-card">Engineering</div>
-      <div class="feature-card">Management</div>
-      <div class="feature-card">Pharmacy</div>
-      <div class="feature-card">Law</div>
-    </div>
-  </section>
-
-  <section id="fees" data-aos="fade-left">
-    <h2>Fees Structure</h2>
-    <div class="feature-container">
-      <div class="feature-card">B.Tech - ₹1.2L/yr</div>
-      <div class="feature-card">MBA - ₹1.5L/yr</div>
-      <div class="feature-card">Pharmacy - ₹90K/yr</div>
-    </div>
-  </section>
-
-  <section id="stats" data-aos="zoom-in-up">
-    <h2>Our Impact</h2>
-    <div class="stat-container">
-      <div class="stat">100% Placement</div>
-      <div class="stat">Highest Package: ₹1.5Cr Intl</div>
-      <div class="stat">Highest Package: ₹60LPA Dom</div>
-    </div>
-  </section>
-
-  <section id="testimonials">
-    <h2>Testimonials</h2>
-    <div class="testimonial active">"College Gate helped me find my dream college!"</div>
-    <div class="testimonial">"Simple, fast, and super helpful experience."</div>
-    <div class="testimonial">"Everything was in one place — made my life easier."</div>
-  </section>
-
-  <section id="contact">
-    <h2>Contact</h2>
-    <div class="contact">
-      <p> Call us at <strong>+91 91939 93693</strong></p>
-      <a href="mailto:info@collegegate.co">info@collegegate.co</a>
-    </div>
- <!-- Address Section -->
-     <section id="contact">
-         <h2>Address :- </h2>
-  <div style="flex: 1; min-width: 250px;">
-    <h3 style="margin-bottom: 10px; color: #00ffff;">Address</h3>
-    <p>Above CANARA BANK 3rd Floor</p>
-    <p>GMS Road, Dehradun</p>
-    <p>Uttarakhand - 248001, India</p>
-  </div>
-</div>
-  </section>
-  <section class="counseling-form" data-aos="zoom-in">
-    <h2>Need Counseling?</h2>
-    <form id="counselingForm">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <input type="text" name="contact" placeholder="Your Contact Number" required>
-      <button type="submit">Submit</button>
-    </form>
-  </section>
-  
-  <a href="tel:+91913993693" class="floating-contact">📞 Contact Now</a>
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 1000, once: true });
-
-    const testimonials = document.querySelectorAll('.testimonial');
-    let index = 0;
-    setInterval(() => {
-      testimonials.forEach(t => t.classList.remove('active'));
-      testimonials[index].classList.add('active');
-      index = (index + 1) % testimonials.length;
-    }, 3000);
-  </script>
-<!-- AOS JS -->
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init();
-</script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-<script>
-  gsap.registerPlugin(ScrollTrigger);
-
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".scroll-colleges",
-      start: "top top",
-      end: "+=1500", // Adjust for mobile to make the scroll slower
-      scrub: true,
-      pin: true
-    }
-  });
-
-  // Step 1: Fade in text "COLLEGES" and zoom from small scale
-  tl.to(".scroll-text", {
-    opacity: 1,
-    scale: 3,
-    duration: 1
-  }, 0.3);
-
-  // Step 2: Shrink the image and text on scroll
-  tl.to(".zoom-image", {
-    scale: 0.6,
-    opacity: 0,
-    duration: 1.5
-  }, 0.6);
-
-  // Step 3: Final shrink of the text
-  tl.to(".scroll-text", {
-    scale: 0.5,
-    duration: 1
-  }, 1.2);
-</script>
-
-
-
+  <script src="data.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
