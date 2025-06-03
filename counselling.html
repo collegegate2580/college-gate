@@ -6,367 +6,11 @@
   <meta property="og:title" content="Counselling Services - CollegeGate Dehradun">
   <meta property="og:description" content="Book a counselling session with our education experts to guide your college admission process.">
   <link rel="shortcut icon" href="https://mocha-cdn.com/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="theme.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="counselling.css">
   <title>Counselling Services - CollegeGate Dehradun</title>
-  <style>
-    /* Counselling Page Specific Styles */
-    .counselling-hero {
-      background: linear-gradient(to right, #f0f5ff, #e6e9ff);
-      border-radius: 0.75rem;
-      padding: 2.5rem;
-      margin-bottom: 2rem;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .counselling-hero::before {
-      content: '';
-      position: absolute;
-      top: -50px;
-      right: -50px;
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      background: rgba(79, 70, 229, 0.1);
-      z-index: 0;
-    }
-    
-    .counselling-hero h1, 
-    .counselling-hero p {
-      position: relative;
-      z-index: 1;
-    }
-    
-    .counselling-section {
-      margin-bottom: 3rem;
-    }
-    
-    .counselling-section h2 {
-      font-size: 1.75rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      color: var(--text-primary);
-      position: relative;
-      padding-bottom: 0.75rem;
-    }
-    
-    .counselling-section h2::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 60px;
-      height: 3px;
-      background-color: var(--primary);
-    }
-    
-    .counselling-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-    
-    .counselling-card {
-      background-color: white;
-      border-radius: 0.75rem;
-      overflow: hidden;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-    }
-    
-    .counselling-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-    }
-    
-    .card-image {
-      height: 160px;
-      overflow: hidden;
-    }
-    
-    .card-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    
-    .counselling-card:hover .card-image img {
-      transform: scale(1.05);
-    }
-    
-    .card-content {
-      padding: 1.5rem;
-    }
-    
-    .card-content h3 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-      color: var(--text-primary);
-    }
-    
-    .card-content p {
-      color: var(--text-secondary);
-      margin-bottom: 1.5rem;
-    }
-    
-    .card-actions {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .card-price {
-      font-weight: 600;
-      color: var(--primary);
-    }
-    
-    .session-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 2rem;
-    }
-    
-    .session-table th,
-    .session-table td {
-      padding: 1rem;
-      text-align: left;
-      border-bottom: 1px solid var(--gray-200);
-    }
-    
-    .session-table th {
-      background-color: var(--gray-100);
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-    
-    .session-table tr:hover {
-      background-color: var(--gray-50);
-    }
-    
-    .booking-form {
-      background-color: white;
-      padding: 2rem;
-      border-radius: 0.75rem;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-    
-    .booking-form h3 {
-      margin-bottom: 1.5rem;
-      font-size: 1.5rem;
-      font-weight: 600;
-    }
-    
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
-    
-    .form-group label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-      color: var(--text-primary);
-    }
-    
-    .form-control {
-      width: 100%;
-      padding: 0.75rem;
-      border: 1px solid var(--gray-300);
-      border-radius: 0.375rem;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-    }
-    
-    .form-control:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-    }
-    
-    .radio-group {
-      display: flex;
-      gap: 1rem;
-    }
-    
-    .radio-container {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-    }
-    
-    .radio-container input {
-      margin-right: 0.5rem;
-    }
-    
-    .book-btn {
-      width: 100%;
-      padding: 0.75rem;
-      background-color: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 0.375rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    
-    .book-btn:hover {
-      background-color: var(--primary-dark);
-    }
-    
-    .testimonials {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-    
-    .testimonial-card {
-      background-color: white;
-      padding: 1.5rem;
-      border-radius: 0.75rem;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-      transition: all 0.3s ease;
-      position: relative;
-    }
-    
-    .testimonial-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-    }
-    
-    .testimonial-card::before {
-      content: '"';
-      font-size: 5rem;
-      position: absolute;
-      top: -1rem;
-      left: 1rem;
-      color: var(--gray-200);
-      font-family: serif;
-      z-index: 0;
-    }
-    
-    .testimonial-content {
-      position: relative;
-      z-index: 1;
-    }
-    
-    .testimonial-text {
-      font-style: italic;
-      color: var(--text-secondary);
-      margin-bottom: 1rem;
-    }
-    
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-    }
-    
-    .author-avatar {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin-right: 1rem;
-    }
-    
-    .author-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    
-    .author-info h4 {
-      font-weight: 600;
-      margin-bottom: 0.25rem;
-    }
-    
-    .author-info p {
-      color: var(--text-secondary);
-      font-size: 0.875rem;
-    }
-    
-    .faq-section {
-      margin-top: 3rem;
-    }
-    
-    .faq-item {
-      margin-bottom: 1rem;
-      border: 1px solid var(--gray-200);
-      border-radius: 0.5rem;
-      overflow: hidden;
-    }
-    
-    .faq-question {
-      padding: 1rem;
-      background-color: var(--white);
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: background-color 0.3s ease;
-    }
-    
-    .faq-question:hover {
-      background-color: var(--gray-50);
-    }
-    
-    .faq-question h3 {
-      font-weight: 500;
-      margin: 0;
-    }
-    
-    .faq-answer {
-      padding: 0 1rem;
-      max-height: 0;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      background-color: var(--gray-50);
-    }
-    
-    .faq-item.active .faq-answer {
-      padding: 1rem;
-      max-height: 300px;
-    }
-    
-    .faq-toggle {
-      transition: transform 0.3s ease;
-    }
-    
-    .faq-item.active .faq-toggle {
-      transform: rotate(180deg);
-    }
-    
-    /* Responsive adaptations */
-    @media screen and (max-width: 768px) {
-      .counselling-grid,
-      .testimonials {
-        grid-template-columns: 1fr;
-      }
-    }
-    
-    /* Animation classes */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.6s ease forwards;
-    }
-    
-    .fade-in-delay-1 {
-      animation-delay: 0.2s;
-    }
-    
-    .fade-in-delay-2 {
-      animation-delay: 0.4s;
-    }
-    
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
+  <script src="theme.js" defer></script>
 </head>
 <body>
   <header class="header" id="header">
@@ -381,11 +25,13 @@
           <a href="colleges.html" class="nav-link">Colleges</a>
           <a href="counselling.html" class="nav-link active">Counselling</a>
           <a href="comparison.html" class="nav-link">Compare Fees</a>
+          <a href="blog.html" class="nav-link">Blog</a>
           <a href="contact.html" class="nav-link">Contact</a>
         </nav>
         
         <div class="nav-actions">
-          <button class="btn-primary">Get Assistance</button>
+          <!-- Theme toggle will be inserted here by theme.js -->
+          <button class="btn-primary" onclick="window.location.href='tel:+919193993693'">Get Assistance</button>
         </div>
         
         <button class="mobile-menu-btn" id="menu-toggle">
@@ -397,276 +43,181 @@
     </div>
   </header>
 
+  <!-- Spacer -->
+  <div style="height: 80px;"></div>
+
   <main>
-    <div class="pt-24 pb-16">
-      <div class="container">
-        <!-- Hero Section -->
-        <section class="counselling-hero fade-in">
-          <div class="max-w-3xl">
-            <h1 class="text-3xl md:text-4xl font-bold mb-4">
-              Professional Education Counselling
-            </h1>
-            <p class="text-lg text-slate-700 mb-0">
-              Get expert guidance from our experienced counsellors to make informed decisions about your education and career path.
-            </p>
-          </div>
-        </section>
-        
-        <!-- Services Section -->
-        <section class="counselling-section fade-in fade-in-delay-1">
-          <h2>Our Counselling Services</h2>
-          <div class="counselling-grid">
-            <div class="counselling-card">
-              <div class="card-image">
-                <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1000&auto=format&fit=crop" alt="College Selection">
-              </div>
-              <div class="card-content">
-                <h3>College Selection</h3>
-                <p>Get personalized recommendations for colleges based on your academic profile, interests, and career goals.</p>
-                <div class="card-actions">
-                  <span class="card-price">₹ FREE / session</span>
-                  <a href="#booking" class="btn-secondary">Book Now</a>
-                </div>
-              </div>
+    <div class="container">
+      <!-- Hero Section -->
+      <section class="counselling-hero">
+        <div class="hero-blob hero-blob-1"></div>
+        <div class="hero-blob hero-blob-2"></div>
+        <h1 class="hero-title">Expert <span>Counselling</span> Services</h1>
+        <p class="hero-subtitle">Get personalized guidance from our experienced counsellors to make informed decisions about your education journey. Book a session today and take the first step towards your dream college.</p>
+        <div class="hero-buttons">
+          <button class="btn-primary" onclick="document.getElementById('booking-form').scrollIntoView({behavior: 'smooth'})">
+            Book a Session
+          </button>
+          <button class="btn-secondary" onclick="document.getElementById('pricing').scrollIntoView({behavior: 'smooth'})">
+            View Pricing
+          </button>
+        </div>
+      </section>
+      
+      <!-- Services Section -->
+      <section class="counselling-section reveal">
+        <h2>Our Counselling Services</h2>
+        <div class="counselling-grid">
+          <div class="counselling-card">
+            <div class="card-image">
+              <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1000&auto=format&fit=crop" alt="Career Guidance">
             </div>
-            
-            <div class="counselling-card">
-              <div class="card-image">
-                <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=1000&auto=format&fit=crop" alt="Course Selection">
-              </div>
-              <div class="card-content">
-                <h3>Course Selection</h3>
-                <p>Explore various academic disciplines and courses to find the best fit for your skills, interests, and career aspirations.</p>
-                <div class="card-actions">
-                  <span class="card-price">₹  FREE / session</span>
-                  <a href="#booking" class="btn-secondary">Book Now</a>
-                </div>
-              </div>
-            </div>
-            
-            <div class="counselling-card">
-              <div class="card-image">
-                <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=1000&auto=format&fit=crop" alt="Career Guidance">
-              </div>
-              <div class="card-content">
-                <h3>Career Guidance</h3>
-                <p>Receive guidance on career paths, industry trends, and job prospects to align your education with your professional goals.</p>
-                <div class="card-actions">
-                  <span class="card-price">₹  FREE / session</span>
-                  <a href="#booking" class="btn-secondary">Book Now</a>
-                </div>
+            <div class="card-content">
+              <h3>Career Guidance</h3>
+              <p>
+                Explore various career paths and get expert advice on choosing the right course based on your interests and aptitude.
+              </p>
+              <div class="card-actions">
+                <span class="card-price"><del style="color: var(--text)">₹999</del> <span style="color: red">FREE</span></span>
+                <button class="btn-primary" onclick="document.getElementById('booking-form').scrollIntoView({behavior: 'smooth'})">Book Now</button>
               </div>
             </div>
           </div>
-        </section>
-        
-        <!-- Upcoming Sessions -->
-        <section class="counselling-section fade-in fade-in-delay-2">
-          <h2>Upcoming Counselling Sessions</h2>
-          <div class="table-responsive">
-            <table class="session-table">
-              <thead>
-                <tr>
-                  <th>College</th>
-                  <th>Date</th>
-                  <th>Time</th>
-                  <th>Venue</th>
-                  <th>Eligibility</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody id="counselling-sessions">
-                <!-- Sessions will be loaded from JS -->
-              </tbody>
-            </table>
-          </div>
-        </section>
-        
-        <!-- Booking Form -->
-        <section class="counselling-section fade-in" id="booking">
-          <h2>Book a Counselling Session</h2>
-          <div class="booking-form">
-            <h3>Personal Counselling</h3>
-            <form id="booking-form">
-              <div class="form-group">
-                <label for="full-name">Full Name</label>
-                <input type="text" id="full-name" class="form-control" required>
-              </div>
-              
-              <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" class="form-control" required>
-              </div>
-              
-              <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" class="form-control" required>
-              </div>
-              
-              <div class="form-group">
-                <label for="counselling-type">Counselling Type</label>
-                <select id="counselling-type" class="form-control" required>
-                  <option value="">Select a type</option>
-                  <option value="college-selection">College Selection</option>
-                  <option value="course-selection">Course Selection</option>
-                  <option value="career-guidance">Career Guidance</option>
-                </select>
-              </div>
-              
-              <div class="form-group">
-                <label for="preferred-date">Preferred Date</label>
-                <input type="date" id="preferred-date" class="form-control" required>
-              </div>
-              
-              <div class="form-group">
-                <label for="preferred-time">Preferred Time</label>
-                <select id="preferred-time" class="form-control" required>
-                  <option value="">Select a time</option>
-                  <option value="morning">Morning (9 AM - 12 PM)</option>
-                  <option value="afternoon">Afternoon (12 PM - 3 PM)</option>
-                  <option value="evening">Evening (3 PM - 6 PM)</option>
-                </select>
-              </div>
-              
-              <div class="form-group">
-                <label>Counselling Mode</label>
-                <div class="radio-group">
-                  <label class="radio-container">
-                    <input type="radio" name="mode" value="online" checked> Online
-                  </label>
-                  <label class="radio-container">
-                    <input type="radio" name="mode" value="in-person"> In-Person
-                  </label>
-                </div>
-              </div>
-              
-              <div class="form-group">
-                <label for="message">Additional Information</label>
-                <textarea id="message" class="form-control" rows="4"></textarea>
-              </div>
-              
-              <button type="submit" class="book-btn">Book Counselling Session</button>
-            </form>
-          </div>
-        </section>
-        
-        <!-- Testimonials -->
-        <section class="counselling-section fade-in">
-          <h2>What Our Students Say</h2>
-          <div class="testimonials">
-            <div class="testimonial-card">
-              <div class="testimonial-content">
-                <p class="testimonial-text">"The counselling session helped me narrow down my college choices based on my interests and career goals. I'm now studying at my dream college thanks to the guidance I received."</p>
-                <div class="testimonial-author">
-                  <div class="author-avatar">
-                    <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Priya Sharma">
-                  </div>
-                  <div class="author-info">
-                    <h4>Priya Sharma</h4>
-                    <p>B.Tech Student,  COER Roorkee</p>
-                  </div>
-                </div>
-              </div>
+          
+          <div class="counselling-card">
+            <div class="card-image">
+              <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=1000&auto=format&fit=crop" alt="College Selection">
             </div>
-            
-            <div class="testimonial-card">
-              <div class="testimonial-content">
-                <p class="testimonial-text">"I was confused about which course to pursue after 12th. The career guidance session helped me understand my strengths and choose a path that I'm truly passionate about."</p>
-                <div class="testimonial-author">
-                  <div class="author-avatar">
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rahul Verma">
-                  </div>
-                  <div class="author-info">
-                    <h4>Rahul Verma</h4>
-                    <p>BBA Student, DEV BHOOMI University</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="testimonial-card">
-              <div class="testimonial-content">
-                <p class="testimonial-text">"The counsellors are very knowledgeable and patient. They answered all my queries about admissions and helped me prepare for interviews. Highly recommend their services!"</p>
-                <div class="testimonial-author">
-                  <div class="author-avatar">
-                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Aisha Khan">
-                  </div>
-                  <div class="author-info">
-                    <h4>Aisha Khan</h4>
-                    <p>MBA Student, UPES , Dehradun</p>
-                  </div>
-                </div>
+            <div class="card-content">
+              <h3>College Selection</h3>
+              <p>
+                Get personalized recommendations for colleges based on your academic profile, preferences, and budget.
+              </p>
+              <div class="card-actions">
+                <span class="card-price"><del style="color: var(--text)">₹1499</del> <span style="color: red">FREE</span></span>
+                <button class="btn-primary" onclick="document.getElementById('booking-form').scrollIntoView({behavior: 'smooth'})">Book Now</button>
               </div>
             </div>
           </div>
-        </section>
-        
-        <!-- FAQ Section -->
-        <section class="faq-section fade-in">
-          <h2>Frequently Asked Questions</h2>
-          <div class="faq-container">
-            <div class="faq-item">
-              <div class="faq-question">
-                <h3>What is educational counselling?</h3>
-                <span class="faq-toggle">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </span>
-              </div>
-              <div class="faq-answer">
-                <p>Educational counselling is a process where trained professionals provide guidance to students about their academic choices, career paths, and personal development. It helps students make informed decisions about their education and future career.</p>
-              </div>
+          
+          <div class="counselling-card">
+            <div class="card-image">
+              <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=1000&auto=format&fit=crop" alt="Admission Guidance">
             </div>
-            
-            <div class="faq-item">
-              <div class="faq-question">
-                <h3>How long does a counselling session last?</h3>
-                <span class="faq-toggle">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </span>
-              </div>
-              <div class="faq-answer">
-                <p>A typical counselling session lasts for 45-60 minutes. However, the duration may vary depending on the complexity of the issues being discussed and the type of counselling service you've opted for.</p>
-              </div>
-            </div>
-            
-            <div class="faq-item">
-              <div class="faq-question">
-                <h3>How can I reschedule or cancel my booking?</h3>
-                <span class="faq-toggle">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </span>
-              </div>
-              <div class="faq-answer">
-                <p>To reschedule or cancel your booking, please contact us at least 24 hours before your scheduled session. You can email us at counselling@collegegate.com or call us at +91 135 2741487. Rescheduling is subject to counsellor availability.</p>
-              </div>
-            </div>
-            
-            <div class="faq-item">
-              <div class="faq-question">
-                <h3>What should I prepare before a counselling session?</h3>
-                <span class="faq-toggle">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </span>
-              </div>
-              <div class="faq-answer">
-                <p>Before your session, it's helpful to have your academic records, list of interests, career aspirations, and any specific questions you'd like to discuss. This will make the session more productive and tailored to your needs.</p>
-              </div>
-            </div>
-            
-            <div class="faq-item">
-              <div class="faq-question">
-                <h3>Do you offer group counselling sessions?</h3>
-                <span class="faq-toggle">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </span>
-              </div>
-              <div class="faq-answer">
-                <p>Yes, we offer group counselling sessions for schools, colleges, and other educational institutions. These sessions are customized based on the needs of the group and cover topics like career exploration, exam preparation, stress management, etc. Please contact us for more details.</p>
+            <div class="card-content">
+              <h3>Admission Guidance</h3>
+              <p>
+                Complete assistance with admission procedures, documentation, and interview preparation.
+              </p>
+              <div class="card-actions">
+                <span class="card-price"><del style="color: var(--text)">₹1999</del> <span style="color: red">FREE</span></span>
+                <button class="btn-primary" onclick="document.getElementById('booking-form').scrollIntoView({behavior: 'smooth'})">Book Now</button>
               </div>
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+      
+      <!-- Pricing Section -->
+      <section class="counselling-section reveal" id="pricing">
+        <h2>Session Pricing</h2>
+        <table class="session-table">
+          <thead>
+            <tr>
+              <th>Service Type</th>
+              <th>Duration</th>
+              <th>Price</th>
+              <th>Features</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Basic Consultation</td>
+              <td>30 minutes</td>
+              <td><span style="color: red">FREE</span></td>
+              <td>Career guidance, Course selection</td>
+            </tr>
+            <tr>
+              <td>Standard Session</td>
+              <td>45 minutes</td>
+              <td><span style="color: red">FREE</span></td>
+              <td>College selection, Admission process guidance</td>
+            </tr>
+            <tr>
+              <td>Premium Package</td>
+              <td>60 minutes</td>
+              <td><span style="color: red">FREE</span></td>
+              <td>Complete admission assistance, Interview preparation</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      
+      <!-- Booking Form -->
+      <section class="counselling-section reveal" id="booking-form">
+        <h2>Book a Counselling Session</h2>
+        <div class="booking-form">
+          <form id="counselling-form">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" class="form-control" required placeholder="Enter your full name">
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" class="form-control" required placeholder="Enter your email address">
+            </div>
+            
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" class="form-control" required placeholder="Enter your phone number">
+            </div>
+            
+            <div class="form-group">
+              <label>Preferred Session Type</label>
+              <div class="radio-group">
+                <label class="radio-container">
+                  <input type="radio" name="session-type" value="basic" required>
+                  Basic Consultation
+                </label>
+                <label class="radio-container">
+                  <input type="radio" name="session-type" value="standard">
+                  Standard Session
+                </label>
+                <label class="radio-container">
+                  <input type="radio" name="session-type" value="premium">
+                  Premium Package
+                </label>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="date">Preferred Date</label>
+              <input type="date" id="date" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="time">Preferred Time</label>
+              <select id="time" class="form-control" required>
+                <option value="">Select a time slot</option>
+                <option value="10:00">10:00 AM</option>
+                <option value="11:00">11:00 AM</option>
+                <option value="12:00">12:00 PM</option>
+                <option value="14:00">2:00 PM</option>
+                <option value="15:00">3:00 PM</option>
+                <option value="16:00">4:00 PM</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Additional Notes (Optional)</label>
+              <textarea id="message" class="form-control" rows="4" placeholder="Any specific requirements or questions?"></textarea>
+            </div>
+            
+            <button type="submit" class="btn-primary">Book Session</button>
+          </form>
+        </div>
+      </section>
     </div>
   </main>
 
@@ -702,6 +253,7 @@
             <li><a href="colleges.html">Colleges</a></li>
             <li><a href="counselling.html">Counselling</a></li>
             <li><a href="comparison.html">Compare Fees</a></li>
+            <li><a href="blog.html">Blog</a></li>
             <li><a href="contact.html">Contact Us</a></li>
           </ul>
         </div>
@@ -709,10 +261,10 @@
         <div class="footer-column">
           <h3>Top Colleges</h3>
           <ul class="footer-links">
-            <li><a href="#">IIT Roorkee</a></li>
+            <li><a href="#">UPES</a></li>
             <li><a href="#">Graphic Era University</a></li>
-            <li><a href="#">Dehradun Institute of Technology</a></li>
-            <li><a href="#">Doon University</a></li>
+            <li><a href="#">Jigyasa University</a></li>
+            <li><a href="#">COER University</a></li>
           </ul>
         </div>
         
@@ -741,88 +293,9 @@
     </div>
   </footer>
 
-  <script src="./js/data.js"></script>
-  <script src="./js/main.js"></script>
-  <script>
-    // Load counselling sessions
-    document.addEventListener('DOMContentLoaded', function() {
-      const sessionsContainer = document.getElementById('counselling-sessions');
-      
-      // Display counselling dates from data.js
-      counsellingDates.forEach(session => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>${session.college}</td>
-          <td>${session.date}</td>
-          <td>${session.time}</td>
-          <td>${session.venue}</td>
-          <td>${session.eligibility}</td>
-          <td>
-            <a href="#booking" class="btn-primary" style="font-size: 0.875rem; padding: 0.375rem 0.75rem;">Register</a>
-          </td>
-        `;
-        sessionsContainer.appendChild(row);
-      });
-      
-      // Booking form handling
-      const bookingForm = document.getElementById('booking-form');
-      bookingForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Simple validation
-        const fullName = document.getElementById('full-name').value;
-        const email = document.getElementById('email').value;
-        const phone = document.getElementById('phone').value;
-        const counsellingType = document.getElementById('counselling-type').value;
-        
-        if (!fullName || !email || !phone || !counsellingType) {
-          alert('Please fill in all required fields.');
-          return;
-        }
-        
-        // In a real application, you would send this data to a server
-        alert('Thank you for booking a counselling session! We will contact you shortly to confirm your appointment.');
-        this.reset();
-      });
-      
-      // FAQ toggle functionality
-      const faqItems = document.querySelectorAll('.faq-item');
-      faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-        question.addEventListener('click', () => {
-          // Close other open FAQs
-          faqItems.forEach(other => {
-            if (other !== item && other.classList.contains('active')) {
-              other.classList.remove('active');
-            }
-          });
-          
-          // Toggle current FAQ
-          item.classList.toggle('active');
-        });
-      });
-      
-      // Animation on scroll
-      const fadeElements = document.querySelectorAll('.fade-in');
-      
-      function checkFade() {
-        fadeElements.forEach(element => {
-          const elementTop = element.getBoundingClientRect().top;
-          const windowHeight = window.innerHeight;
-          
-          if (elementTop < windowHeight - 100) {
-            element.style.opacity = '1';
-            element.style.transform = 'translateY(0)';
-          }
-        });
-      }
-      
-      // Initial check
-      checkFade();
-      
-      // Check on scroll
-      window.addEventListener('scroll', checkFade);
-    });
-  </script>
+  <script src="data.js"></script>
+  <script src="main.js"></script>
+  <script src="theme.js"></script>
+  <script src="utils.js"></script>
 </body>
 </html>
