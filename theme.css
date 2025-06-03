@@ -1,6 +1,8 @@
 /* Light Theme Variables */
 :root {
   --primary-color: #0d6efd;
+  --primary-color-transparent: rgba(13, 110, 253, 0.2);
+  --primary-color-hover: #0b5ed7;
   --background: #ffffff;
   --text: #333333;
   --text-light: #666666;
@@ -13,11 +15,14 @@
   --hero-bg: #f8f9fa;
   --feature-icon-bg: #f8f9fa;
   --shadow: rgba(0, 0, 0, 0.1);
+  --map-filter: none;
 }
 
 /* Dark Theme Variables */
 [data-theme="dark"] {
   --primary-color: #4d9fff;
+  --primary-color-transparent: rgba(77, 159, 255, 0.2);
+  --primary-color-hover: #3d8fe6;
   --background: #121212;
   --text: #ffffff;
   --text-light: #b0b0b0;
@@ -30,6 +35,7 @@
   --hero-bg: #1a1a1a;
   --feature-icon-bg: #2a2a2a;
   --shadow: rgba(0, 0, 0, 0.3);
+  --map-filter: invert(0.9) hue-rotate(180deg) brightness(0.9) contrast(0.9);
 }
 
 /* Global Styles */
