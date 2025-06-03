@@ -13,6 +13,61 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Initialize the application
   initApp();
+  
+  // Scroll reveal animation
+  window.addEventListener('scroll', revealOnScroll);
+  
+  // Add initial class on page load
+  const reveals = document.querySelectorAll('.reveal');
+  reveals.forEach(element => {
+    element.classList.add('not-visible');
+  });
+  // Trigger initial check
+  revealOnScroll();
+
+  // Reviews Section Animations
+  // Animate stats numbers
+  const stats = document.querySelectorAll('.stat-number');
+  const options = {
+    threshold: 0.5
+  };
+
+  const statsObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const target = entry.target;
+        const value = target.textContent;
+        if (value.includes('+')) {
+          animateNumber(target, parseInt(value), true);
+        } else {
+          animateNumber(target, parseFloat(value), false);
+        }
+        observer.unobserve(target);
+      }
+    });
+  }, options);
+
+  stats.forEach(stat => statsObserver.observe(stat));
+
+  // Animate review cards on scroll
+  const reviewCards = document.querySelectorAll('.review-card');
+  const reviewObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  reviewCards.forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(30px)';
+    reviewObserver.observe(card);
+  });
 });
 
 function initApp() {
@@ -223,3 +278,72 @@ if (searchForm) {
     window.location.href = 'colleges.html';
   });
 }
+
+function revealOnScroll() {
+  const reveals = document.querySelectorAll('.reveal');
+  
+  reveals.forEach(element => {
+    const windowHeight = window.innerHeight;
+    const elementTop = element.getBoundingClientRect().top;
+    const elementVisible = 150;
+    
+    if (elementTop < windowHeight - elementVisible) {
+      element.classList.remove('not-visible');
+      element.classList.add('active');
+    } else {
+      element.classList.add('not-visible');
+      element.classList.remove('active');
+    }
+  });
+}
+
+function animateNumber(element, target, hasPlus) {
+  let current = 0;
+  const duration = 2000; // 2 seconds
+  const step = target / (duration / 16); // 60fps
+  const isDecimal = !Number.isInteger(target);
+
+  function update() {
+    current += step;
+    if (current >= target) {
+      element.textContent = hasPlus ? Math.floor(target) + '+' : 
+                           (isDecimal ? target.toFixed(1) : Math.floor(target));
+      return;
+    }
+    element.textContent = hasPlus ? Math.floor(current) + '+' : 
+                         (isDecimal ? current.toFixed(1) : Math.floor(current));
+    requestAnimationFrame(update);
+  }
+
+  update();
+}
+
+// Add hover effect for review cards
+const reviewCards = document.querySelectorAll('.review-card');
+reviewCards.forEach(card => {
+  card.addEventListener('mouseenter', function() {
+    this.style.transform = 'translateY(-10px) scale(1.02)';
+    this.style.boxShadow = '0 20px 40px rgba(var(--primary-color-rgb), 0.15)';
+  });
+
+  card.addEventListener('mouseleave', function() {
+    this.style.transform = 'translateY(0) scale(1)';
+    this.style.boxShadow = '0 4px 20px rgba(var(--primary-color-rgb), 0.1)';
+  });
+});
+
+// Add shimmer effect on review cards
+function addShimmerEffect() {
+  const cards = document.querySelectorAll('.review-card');
+  cards.forEach((card, index) => {
+    setTimeout(() => {
+      card.classList.add('shimmer');
+      setTimeout(() => {
+        card.classList.remove('shimmer');
+      }, 1000);
+    }, index * 200);
+  });
+}
+
+// Trigger shimmer effect periodically
+setInterval(addShimmerEffect, 5000);
