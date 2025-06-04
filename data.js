@@ -1,28 +1,120 @@
 // College data
 const colleges = [
   // Existing colleges
-    {
-      id: 1,
-      name: "COER University, ROORKEE",
-      shortName: "Coer",
-      type: "Government",
-      rating: 4.8,
-      affiliation: "Autonomous",
-      location: "Roorkee,",
-      established: "1847",
-      image: "college_images/coer.webp",
-      facilities: ["Library", "Sports Complex", "Laboratories", "Cafeteria", "Hostels", "Wi-Fi Campus"],
-      description: "IIT Roorkee is among the foremost institutes of national importance in higher technological education and research. The institute offers Bachelor's Degree courses in 10 disciplines of Engineering and Architecture and Postgraduate's Degree in 55 disciplines.",
-      admissionProcess: "Admissions to B.Tech programs are through JEE Advanced. M.Tech admissions are through GATE scores.",
-      courses: [
-        { name: "B.Tech ", duration: "4 Years", fees: 168150, seats: 120 },
-        { name: "B.Tech(LE) ", duration: "4 Years", fees: 168150, seats: 100 },
-        { name: "M. Tech(CSE/ME)", duration: "2 Years", fees: 	125900, seats: 60 },
-        { name: "	Diploma", duration: "2 Years", fees: 76000, seats: 60 }
-      ],
-    },
+  {
+    id: 1,
+    name: "Graphic Era University",
+    shortName: "GEU",
+    type: "Private",
+    rating: 4.6,
+    accreditation: "NAAC A+",
+    location: "Dehradun, Uttarakhand",
+    established: 1993,
+    image: "college_images/1576563781phpQj94TQ.jpeg",
+    logoImg: "https://www.geu.ac.in/content/dam/geu/geu-logo.svg",
+    description: "Graphic Era University, founded by Prof. Kamal Ghanshala, started as a computer center in 1993 and evolved into a prestigious deemed university. Located in Clement Town, Dehradun, the 25-acre campus is bordered by Rajaji National Park and Clement Town Cantonment. The university holds NAAC A+ accreditation and ranks 52nd nationally in engineering (NIRF 2024).",
+    facilities: ["Smart Classrooms", "Research Labs", "High-Speed Wi-Fi Campus", "World-Class Hostels", "Sports Complex", "Technology Business Incubator", "Multiple Cafeterias", "Indoor & Outdoor Auditoriums"],
+    ranking: "Ranked #52 in University Category by NIRF 2024",
+    website: "https://www.geu.ac.in/",
+    contact: "+91 7060800800",
+    courses: [
+      // B.Tech Programs
+      { name: "B.Tech in Computer Science and Engineering", duration: "4 Years", fees: 354730, specialization: "Core CSE" },
+      { name: "B.Tech in CSE", duration: "4 Years", fees: 354730, specialization: "Artificial Intelligence & Machine Learning" },
+      { name: "B.Tech in CSE", duration: "4 Years", fees: 354730, specialization: "Data Science" },
+      { name: "B.Tech in CSE", duration: "4 Years", fees: 354730, specialization: "Cloud Computing & Virtualization" },
+      { name: "B.Tech in CSE", duration: "4 Years", fees: 354730, specialization: "Cyber Security & Forensics" },
+      { name: "B.Tech in Electronics & Communication", duration: "4 Years", fees: 354730 },
+      { name: "B.Tech in Mechanical Engineering", duration: "4 Years", fees: 354730 },
+      { name: "B.Tech in Civil Engineering", duration: "4 Years", fees: 354730 },
+      { name: "B.Tech in Electrical Engineering", duration: "4 Years", fees: 354730 },
+      
+      // Management Programs
+      { name: "BBA", duration: "3 Years", fees: 95000, specialization: "General" },
+      { name: "BBA", duration: "3 Years", fees: 95000, specialization: "Digital Marketing" },
+      { name: "BBA", duration: "3 Years", fees: 95000, specialization: "Business Analytics" },
+      { name: "MBA", duration: "2 Years", fees: 180000, specialization: "Marketing" },
+      { name: "MBA", duration: "2 Years", fees: 180000, specialization: "Finance" },
+      { name: "MBA", duration: "2 Years", fees: 180000, specialization: "HR" },
+      { name: "MBA", duration: "2 Years", fees: 180000, specialization: "Business Analytics" },
+      
+      // Computer Applications
+      { name: "BCA", duration: "3 Years", fees: 85000 },
+      { name: "MCA", duration: "2 Years", fees: 120000 },
+      
+      // Science Programs
+      { name: "B.Sc", duration: "3 Years", fees: 75000, specialization: "Physics" },
+      { name: "B.Sc", duration: "3 Years", fees: 75000, specialization: "Chemistry" },
+      { name: "B.Sc", duration: "3 Years", fees: 75000, specialization: "Mathematics" },
+      { name: "B.Sc", duration: "3 Years", fees: 85000, specialization: "Agriculture" },
+      { name: "B.Sc", duration: "3 Years", fees: 85000, specialization: "Biotechnology" },
+      
+      // Commerce & Arts
+      { name: "B.Com", duration: "3 Years", fees: 75000, specialization: "Honours" },
+      { name: "B.Com", duration: "3 Years", fees: 65000, specialization: "Regular" },
+      { name: "BA", duration: "3 Years", fees: 65000, specialization: "Economics" },
+      { name: "BA", duration: "3 Years", fees: 65000, specialization: "English" },
+      
+      // Law Programs
+      { name: "BBA-LLB", duration: "5 Years", fees: 125000, specialization: "Integrated" },
+      { name: "LLB", duration: "3 Years", fees: 95000 },
+      
+      // Research Programs
+      { name: "Ph.D", duration: "3-5 Years", fees: 150000, specialization: "Various Disciplines" },
+      
+      // M.Tech Programs
+      { name: "M.Tech in CSE", duration: "2 Years", fees: 120000 },
+      { name: "M.Tech in Data Science", duration: "2 Years", fees: 120000 },
+      { name: "M.Tech in AI & ML", duration: "2 Years", fees: 120000 },
+      { name: "M.Tech in ECE", duration: "2 Years", fees: 120000 },
+      { name: "M.Tech in Mechanical", duration: "2 Years", fees: 120000 }
+    ]
+  },
   {
     id: 2,
+    name: "COER University",
+    shortName: "COER",
+    type: "Private",
+    rating: 4.5,
+    accreditation: "NAAC A+",
+    established: 1998,
+    location: "Roorkee, Uttarakhand",
+    description: "College of Engineering Roorkee (COER) is a premier engineering institution established in 1998. Located in Roorkee, it offers high-quality technical education with state-of-the-art infrastructure and experienced faculty. The university focuses on holistic development through industry collaborations, research opportunities, and practical training.",
+    establishment: "1998",
+    image: "college_images/coer.webp",
+    rating: 4.5,
+    reviews: 120,
+    fees: "₹2.5L - ₹4L per year",
+    courses: ["B.Tech", "M.Tech", "MBA", "BCA", "MCA"],
+    facilities: ["Library", "Sports Complex", "Hostel", "Labs", "Cafeteria"]
+  },
+  {
+    id: 3,
+    name: "University of Petroleum and Energy Studies",
+    shortName: "UPES",
+    type: "Private",
+    rating: 4.5,
+    affiliation: "UGC",
+    location: "Prem nagar, Dehradun, Uttarakhand",
+    established: "1993",
+    image: "college_images/upes.jpg",
+    facilities: ["Modern Library", "Sports Complex", "Advanced Labs", "Cafeteria", "Hostels", "Wi-Fi Campus"],
+    description: "UPES is a private university located in Dehradun, Uttarakhand, India. Tucked away in the hills of misty Dehradun, the serene, quiet, campuses at Bidholi and Kandoli are ideal places for a truly immersive learning experience. UPES is known for its specialized programs in energy, petroleum, and other sectors.",
+    ranking: "Ranked #1 in Petroleum Engineering by NIRF 2023",
+    website: "https://www.upes.ac.in/",
+    contact: "+91 135 277 6055",
+    logoImg: "https://www.upes.ac.in/sites/default/files/2023-01/upes-logo.png",
+    admissionProcess: "Admissions to engineering programs are through JEE Mains scores. Management admissions are through CAT/MAT scores. Direct admissions are also available based on merit.",
+    courses: [
+      { name: "B.Tech(niotech) ", duration: "4 Years", fees: 160000, seats: 180 },
+      { name: "B.Tech(petroleum) ", duration: "4 Years", fees: 160000, seats: 180 },
+      { name: "B.Tech(chemical) ", duration: "4 Years", fees: 160000, seats: 180 },
+      { name: "BBA", duration: "3 Years", fees: 120000, seats: 120 },
+      { name: "MBA", duration: "2 Years", fees: 180000, seats: 60 }
+    ],
+  },
+  {
+    id: 4,
     name: "Dev Bhoomi Group of Institutions",
     shortName: "DBGI",
     type: "Private",
@@ -32,8 +124,8 @@ const colleges = [
     established: 2005,
     image: "college_images/dev.jpeg",
     logoImg: "https://www.dbgidoon.ac.in/wp-content/uploads/2022/01/dbgi-log.png",
-    description: "DBGI is dedicated to excellence in teaching, learning, and developing leaders across many disciplines who make a difference globally.",
-    facilities: ["Computer Labs", "Hostels", "Sports Complex", "Auditorium", "Library"],
+    description: "Dev Bhoomi Group of Institutions (DBGI) was established in 2005 as a leading educational institution in Uttarakhand. The campus features modern infrastructure, advanced laboratories, and experienced faculty members. DBGI is known for its industry-focused curriculum, placement assistance, and emphasis on practical learning.",
+    facilities: ["Digital Library", "Indoor Stadium", "Hostels", "Transport", "Medical Facility"],
     ranking: "Ranked among Top 10 Private Colleges in Uttarakhand",
     website: "https://www.dbgidoon.ac.in/",
     contact: "+91 1352 773030",
@@ -42,108 +134,60 @@ const colleges = [
       { name: "MBA", duration: "2 Years", fees: 95000 },
       { name: "BCA", duration: "3 Years", fees: 65000 },
       { name: "Dimploma", duration: "2 Years", fees: 65000 },
-      { name: "Phd", duration: "3 Years", fees: 65000 }
+      { name: "B.Pharm", duration: "4 Years", fees: 65000 }
     ]
   },
- {
-      id: 3,
-      name: "University of Petroleum and Energy Studies",
-      shortName: "UPES",
-      type: "Private",
-      rating: 4.5,
-      affiliation: "UGC",
-      location: "Prem nagar, Dehradun",
-      established: "1993",
-      image: "college_images/upes.jpg",
-      facilities: ["Modern Library", "Sports Complex", "Advanced Labs", "Cafeteria", "Hostels", "Wi-Fi Campus"],
-      description: "UPES is a private university located in Dehradun, Uttarakhand, India. Tucked away in the hills of misty Dehradun, the serene, quiet, campuses at Bidholi and Kandoli are ideal places for a truly immersive learning experience. UPES is known for its specialized programs in energy, petroleum, and other sectors.",
-      ranking: "Ranked #1 in Petroleum Engineering by NIRF 2023",
-      website: "https://www.upes.ac.in/",
-      contact: "+91 135 277 6055",
-      logoImg: "https://www.upes.ac.in/sites/default/files/2023-01/upes-logo.png",
-      admissionProcess: "Admissions to engineering programs are through JEE Mains scores. Management admissions are through CAT/MAT scores. Direct admissions are also available based on merit.",
-      courses: [
-        { name: "B.Tech(niotech) ", duration: "4 Years", fees: 160000, seats: 180 },
-        { name: "B.Tech(petroleum) ", duration: "4 Years", fees: 160000, seats: 180 },
-        { name: "B.Tech(chemical) ", duration: "4 Years", fees: 160000, seats: 180 },
-        { name: "BBA", duration: "3 Years", fees: 120000, seats: 120 },
-        { name: "MBA", duration: "2 Years", fees: 180000, seats: 60 }
-      ],
-    },
   {
-    id: 4,
+    id: 5,
     name: "Sai Group of Institutions",
     shortName: "SGI",
     type: "Private",
-    rating: 4.0,
+    rating: 4.1,
     accreditation: "NAAC B+",
     location: "Dehradun, Uttarakhand",
-    established: 2010,
+    established: 2003,
     image: "college_images/sai.jpg",
     logoImg: "https://www.saicollege.co.in/images/logo-footer.png",
-    description: "Sai Group of Institutions aims to provide quality education with a focus on practical learning and industry exposure.",
-    facilities: ["Library", "Computer Labs", "Hostel", "Cafeteria", "Sports Facilities"],
-    ranking: "Emerging Institution in Uttarakhand",
-    website: "https://www.saicollege.co.in/",
-    contact: "+91 9557522222",
+    description: "Sai Group of Institutions was established in 2003 as Sai Institute of Paramedical and Allied Sciences by Mr. Harish Arora and Mrs. Rani Arora. The institute has grown into a comprehensive educational group offering programs in paramedical sciences, nursing, management, agriculture, and more.",
+    facilities: ["Modern Labs", "Hospital Exposure", "Library", "Hostel", "Transport", "Research Center", "Cafeteria"],
+    ranking: "Leading Healthcare Education Institute in Uttarakhand",
+    website: "https://www.sipasddn.com/",
+    contact: "+91 8193936666",
     courses: [
-      { name: "under-graduate course(medical)", duration: "4 Years", fees: 80000 },
-      { name: "post-graduate courses(medical)", duration: "3 Years", fees: 90000 },
-      { name: "B.Sc(nursing)", duration: "3 Years", fees: 160000 },
+      { name: "Paramedical Courses", duration: "3-4 Years", fees: 80000 },
+      { name: "Nursing Programs", duration: "2-4 Years", fees: 90000 },
+      { name: "B.Sc Nursing", duration: "4 Years", fees: 160000 },
       { name: "BBA", duration: "3 Years", fees: 49000 },
       { name: "BCA", duration: "3 Years", fees: 49000 },
       { name: "B.Com(simple/hons)", duration: "3 Years", fees: 49000 }
     ]
   },
-  
+
   // New colleges
   {
-    id: 5,
+    id: 6,
     name: "Jigyasa University",
     shortName: "JU",
     type: "Private",
-    rating: 4.1,
-    accreditation: "NAAC B++",
+    rating: 4.3,
+    accreditation: "UGC Recognized",
     location: "Dehradun, Uttarakhand",
-    established: 2017,
+    established: 2003,
     image: "college_images/jigyasa.jpg",
     logoImg: "https://via.placeholder.com/150",
-    description: "Jigyasa University focuses on research-driven education with modern infrastructure and experienced faculty.",
-    facilities: ["Digital Library", "Research Labs", "Wi-Fi Campus", "Hostels", "Sports Complex"],
-    ranking: "Emerging Research University in North India",
-    website: "https://www.jigyasauniversity.com/",
-    contact: "+91 9876543210",
+    description: "Jigyasa University (formerly Himgiri Zee University) was established in 2003 and is recognized by UGC. Located on a 50-acre campus in Dehradun, it offers diverse programs across science, technology, education, journalism, hospitality, legal studies, and more. The university emphasizes practical learning, research opportunities, and holistic development with state-of-the-art facilities.",
+    facilities: ["Smart Classrooms", "Research Labs", "Wi-Fi Campus", "Hostels", "Sports Complex", "Library", "Cafeteria"],
+    ranking: "Emerging Research University in Uttarakhand",
+    website: "https://www.jigyasauniversity.edu.in/",
+    contact: "+91 18001804181",
     courses: [
-      { name: "BBA in Fintech & Business Analytics and Aviation Management", duration: "3 Years", fees: 110000 },
-      { name: "MBA in Fintech & Business Analytics and Aviation Management", duration: "2 Years", fees: 170000 },
-      { name: "BA in Journalism & Mass Communication / Psycology", duration: "3 Years", fees: 100000 },
+      { name: "BBA in Fintech & Business Analytics", duration: "3 Years", fees: 110000 },
+      { name: "MBA in Fintech & Business Analytics", duration: "2 Years", fees: 170000 },
+      { name: "BA in Journalism & Mass Communication", duration: "3 Years", fees: 100000 },
       { name: "MA in Journalism & Mass Communication", duration: "2 Years", fees: 80000 },
-      { name: "Certification Courses in Yoga & Wellness, Bareque Nation, Cloud Kithen Operations, Early childhood care and Education", duration: "3 Months", fees: 30000 },
-      { name: "M.Tech with specialisation", duration: "2 Years", fees: 100000 },
+      { name: "B.Tech with specialization", duration: "4 Years", fees: 150000 },
+      { name: "M.Tech with specialization", duration: "2 Years", fees: 100000 },
       { name: "B.Ed", duration: "2 Years", fees: 110000 }
-
-    ]
-  },
-  {
-    id: 6,
-    name: "Graphic Era University",
-    shortName: "GEU",
-    type: "Private",
-    rating: 4.6,
-    accreditation: "NAAC A+",
-    location: "Dehradun, Uttarakhand",
-    established: 1997,
-    image: "college_images/1576563781phpQj94TQ.jpeg",
-    logoImg: "https://www.geu.ac.in/content/dam/geu/geu-logo.svg",
-    description: "Graphic Era University is known for its quality education, innovative teaching methodologies, and excellent placement record.",
-    facilities: ["Smart Classrooms", "Auditorium", "Hostels", "Sports Complex", "Incubation Center"],
-    ranking: "Ranked #2 in Uttarakhand by NIRF 2023",
-    website: "https://www.geu.ac.in/",
-    contact: "+91 7060800800",
-    courses: [
-      { name: "B.Tech in CSE", duration: "4 Years", fees: 354730 },
-      { name: "BBA with specialisation in Hospital administration", duration: "3 Years", fees: 95000 },
-      { name: "M.Tech", duration: "2 Years", fees: 120000 }
     ]
   },
   {
@@ -315,7 +359,7 @@ function createCollegeCard(college) {
   card.style.boxShadow = 'var(--card-shadow)';
   card.style.transition = 'var(--transition-standard)';
   card.style.cursor = 'pointer';
-  
+
   // Card HTML structure
   card.innerHTML = `
     <div class="college-image" style="height: 200px; overflow: hidden; position: relative;">
@@ -372,13 +416,13 @@ function createCollegeCard(college) {
       </div>
     </div>
   `;
-  
+
   // Add click event to the card
-  card.addEventListener('click', function(e) {
+  card.addEventListener('click', function (e) {
     if (!e.target.closest('.btn-contact')) {
       window.location.href = `college-details.html?id=${college.id}`;
     }
   });
-  
+
   return card;
 }
