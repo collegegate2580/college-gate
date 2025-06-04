@@ -29,6 +29,18 @@
   100% { background-position: 1000px 0; }
 }
 
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
 /* Reveal Animation */
 .reveal {
   opacity: 1;
@@ -43,7 +55,10 @@
 
 /* Hero Section */
 .colleges-hero {
-  background: linear-gradient(135deg, var(--primary-color-transparent) 0%, transparent 100%);
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)), url('bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   border-radius: 1.5rem;
   padding: 4rem 2rem;
   margin-bottom: 3rem;
@@ -77,23 +92,64 @@
   background: rgba(var(--accent-color-rgb), 0.1);
 }
 
-.colleges-hero h1 {
-  font-size: 3rem;
-  font-weight: 700;
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  text-align: center;
+  background: linear-gradient(
+    to right,
+    #ffffff,
+    #f5f5f5,
+    #ffdab9,
+    #ffffff
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-flow 8s linear infinite;
   margin-bottom: 1.5rem;
   position: relative;
   z-index: 1;
-  animation: fadeInUp 0.8s ease-out;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.hero-title span {
+  background: linear-gradient(
+    to right,
+    var(--primary-color),
+    #ffdab9,
+    var(--primary-color)
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-flow 8s linear infinite;
+}
+
+.hero-subtitle {
+  display: none;
 }
 
 .colleges-hero p {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  color: var(--text-light);
-  max-width: 600px;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  line-height: 1.8;
+  color: #ffffff;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
   position: relative;
-  z-index: 1;
-  animation: fadeInUp 0.8s ease-out 0.2s backwards;
+  z-index: 2;
+  letter-spacing: 0.2px;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 0 1rem;
+  opacity: 0.95;
 }
 
 /* Filter Section */
@@ -388,12 +444,15 @@
     margin-bottom: 2rem;
   }
   
-  .colleges-hero h1 {
-    font-size: 2rem;
+  .hero-title {
+    font-size: 2.5rem;
   }
   
   .colleges-hero p {
     font-size: 1rem;
+    line-height: 1.6;
+    max-width: 100%;
+    padding: 0 1rem;
   }
   
   .filter-section {
