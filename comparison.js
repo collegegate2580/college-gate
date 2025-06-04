@@ -258,7 +258,7 @@ const collegeData = [
                             type="checkbox" 
                             id="compare-${college.id}" 
                             ${compareColleges[college.id] ? 'checked' : ''} 
-                            ${!compareColleges[college.id] && Object.values(compareColleges).filter(Boolean).length >= 2 ? 'disabled' : ''}
+                            ${!compareColleges[college.id] && Object.values(compareColleges).filter(Boolean).length >= 4 ? 'disabled' : ''}
                             style="margin-right: 0.75rem;"
                         >
                         <div class="college-logo">${college.logo}</div>
@@ -308,9 +308,9 @@ const collegeData = [
     // Update compare button state
     function updateCompareButton() {
         const selectedCount = Object.values(compareColleges).filter(Boolean).length;
-        selectedCountBadge.textContent = `${selectedCount}/2`;
+        selectedCountBadge.textContent = `${selectedCount}/4`;
         
-        if (selectedCount === 2) {
+        if (selectedCount >= 2 && selectedCount <= 4) {
             compareBtn.disabled = false;
         } else {
             compareBtn.disabled = true;
@@ -324,161 +324,115 @@ const collegeData = [
             .filter(([_, selected]) => selected)
             .map(([id]) => parseInt(id));
         
-        if (selectedCollegeIds.length !== 2) return;
+        if (selectedCollegeIds.length < 2) return;
         
-        const college1 = collegeData.find(c => c.id === selectedCollegeIds[0]);
-        const college2 = collegeData.find(c => c.id === selectedCollegeIds[1]);
+        const selectedColleges = selectedCollegeIds.map(id => collegeData.find(c => c.id === id));
         
         // Render college headers
-        collegeHeaderCompare.innerHTML = `
+        collegeHeaderCompare.innerHTML = selectedColleges.map(college => `
             <div class="college-header-item">
-                <div class="college-header-logo">${college1.logo}</div>
+                <div class="college-header-logo">${college.logo}</div>
                 <div>
-                    <div class="college-header-name">${college1.name}</div>
-                    ${college1.scholarshipAvailable ? 
+                    <div class="college-header-name">${college.name}</div>
+                    ${college.scholarshipAvailable ? 
                         `<div class="badge-green">Scholarships Available</div>` : ''}
                 </div>
             </div>
-            <div class="college-header-item">
-                <div class="college-header-logo">${college2.logo}</div>
-                <div>
-                    <div class="college-header-name">${college2.name}</div>
-                    ${college2.scholarshipAvailable ? 
-                        `<div class="badge-green">Scholarships Available</div>` : ''}
-                </div>
-            </div>
-        `;
+        `).join('');
         
         // Update table headers
-        college1NameHeader.textContent = college1.name;
-        college2NameHeader.textContent = college2.name;
-        
-        // Render fee comparison table
-        feeComparisonTableBody.innerHTML = `
-            <tr>
-                <td>Tuition Fee</td>
-                <td>${formatCurrency(college1.tuitionFee)}</td>
-                <td>${formatCurrency(college2.tuitionFee)}</td>
-                <td class="${college1.tuitionFee < college2.tuitionFee ? 'fees-low' : 'fees-high'}">
-                    ${formatCurrency(Math.abs(college1.tuitionFee - college2.tuitionFee))}
-                    ${college1.tuitionFee < college2.tuitionFee ? ' less' : ' more'}
-                </td>
-            </tr>
-            <tr>
-                <td>Hostel Fee</td>
-                <td>${formatCurrency(college1.hostelFee)}</td>
-                <td>${formatCurrency(college2.hostelFee)}</td>
-                <td class="${college1.hostelFee < college2.hostelFee ? 'fees-low' : 'fees-high'}">
-                    ${formatCurrency(Math.abs(college1.hostelFee - college2.hostelFee))}
-                    ${college1.hostelFee < college2.hostelFee ? ' less' : ' more'}
-                </td>
-            </tr>
-            <tr>
-                <td>Exam Fee</td>
-                <td>${formatCurrency(college1.examFee)}</td>
-                <td>${formatCurrency(college2.examFee)}</td>
-                <td class="${college1.examFee < college2.examFee ? 'fees-low' : 'fees-high'}">
-                    ${formatCurrency(Math.abs(college1.examFee - college2.examFee))}
-                    ${college1.examFee < college2.examFee ? ' less' : ' more'}
-                </td>
-            </tr>
-            <tr>
-                <td>Library Fee</td>
-                <td>${formatCurrency(college1.libraryFee)}</td>
-                <td>${formatCurrency(college2.libraryFee)}</td>
-                <td class="${college1.libraryFee < college2.libraryFee ? 'fees-low' : 'fees-high'}">
-                    ${formatCurrency(Math.abs(college1.libraryFee - college2.libraryFee))}
-                    ${college1.libraryFee < college2.libraryFee ? ' less' : ' more'}
-                </td>
-            </tr>
-            <tr style="background-color: #f9fafb; font-weight: 600;">
-                <td>Total Fee</td>
-                <td>${formatCurrency(college1.totalFee)}</td>
-                <td>${formatCurrency(college2.totalFee)}</td>
-                <td class="${college1.totalFee < college2.totalFee ? 'fees-low' : 'fees-high'}">
-                    ${formatCurrency(Math.abs(college1.totalFee - college2.totalFee))}
-                    ${college1.totalFee < college2.totalFee ? ' less' : ' more'}
-                </td>
-            </tr>
+        const headerRow = document.querySelector('#feeComparisonTable thead tr');
+        headerRow.innerHTML = `
+            <th>Fee Type</th>
+            ${selectedColleges.map(college => `<th>${college.name}</th>`).join('')}
+            <th>Difference Range</th>
         `;
         
-        // Render courses grid
-        const allCourses = [...new Set([...college1.courses, ...college2.courses])].sort();
+        // Render fee comparison table
+        const feeTypes = ['tuitionFee', 'hostelFee', 'examFee', 'libraryFee', 'totalFee'];
+        const feeLabels = {
+            tuitionFee: 'Tuition Fee',
+            hostelFee: 'Hostel Fee',
+            examFee: 'Exam Fee',
+            libraryFee: 'Library Fee',
+            totalFee: 'Total Fee'
+        };
         
-        coursesGrid.innerHTML = '';
-        allCourses.forEach(course => {
-            const courseItem = document.createElement('div');
-            courseItem.className = 'course-item';
+        feeComparisonTableBody.innerHTML = feeTypes.map(feeType => {
+            const fees = selectedColleges.map(college => college[feeType]);
+            const minFee = Math.min(...fees);
+            const maxFee = Math.max(...fees);
+            const difference = maxFee - minFee;
             
-            courseItem.innerHTML = `
+            return `
+                <tr ${feeType === 'totalFee' ? 'style="background-color: #f9fafb; font-weight: 600;"' : ''}>
+                    <td>${feeLabels[feeType]}</td>
+                    ${fees.map(fee => `
+                        <td class="${fee === minFee ? 'fees-low' : fee === maxFee ? 'fees-high' : ''}">${formatCurrency(fee)}</td>
+                    `).join('')}
+                    <td>
+                        <span class="fees-difference">
+                            Range: ${formatCurrency(difference)}
+                            (${((maxFee - minFee) / maxFee * 100).toFixed(1)}% variation)
+                        </span>
+                    </td>
+                </tr>
+            `;
+        }).join('');
+        
+        // Render courses grid
+        const allCourses = [...new Set(selectedColleges.flatMap(college => college.courses))].sort();
+        
+        coursesGrid.innerHTML = allCourses.map(course => `
+            <div class="course-item">
                 <span class="course-name">${course}</span>
                 <div class="course-availability">
-                    <span class="${college1.courses.includes(course) ? 'available' : 'not-available'}">
-                        ${college1.courses.includes(course) ? '✓' : '✗'}
-                    </span>
-                    <span class="${college2.courses.includes(course) ? 'available' : 'not-available'}">
-                        ${college2.courses.includes(course) ? '✓' : '✗'}
-                    </span>
+                    ${selectedColleges.map(college => `
+                        <span class="${college.courses.includes(course) ? 'available' : 'not-available'}">
+                            ${college.courses.includes(course) ? '✓' : '✗'}
+                        </span>
+                    `).join('')}
                 </div>
-            `;
-            
-            coursesGrid.appendChild(courseItem);
-        });
+            </div>
+        `).join('');
         
         // Render chart
-        renderComparisonChart(college1, college2);
+        renderComparisonChart(selectedColleges);
         
         // Show modal
         comparisonModal.classList.add('active');
     }
 
-    // Render comparison chart
-    function renderComparisonChart(college1, college2) {
+    // Update chart rendering for multiple colleges
+    function renderComparisonChart(colleges) {
         const ctx = document.getElementById('comparisonChart').getContext('2d');
         
-        // Destroy previous chart if exists
         if (window.comparisonChartInstance) {
             window.comparisonChartInstance.destroy();
         }
         
-        // Prepare data
         const labels = ['Tuition Fee', 'Hostel Fee', 'Exam Fee', 'Library Fee', 'Total Fee'];
-        const data1 = [
-            college1.tuitionFee, 
-            college1.hostelFee, 
-            college1.examFee, 
-            college1.libraryFee, 
-            college1.totalFee
-        ];
-        const data2 = [
-            college2.tuitionFee, 
-            college2.hostelFee, 
-            college2.examFee, 
-            college2.libraryFee, 
-            college2.totalFee
-        ];
+        const colors = ['#4f46e5', '#10b981', '#f59e0b', '#ef4444'];
         
-        // Create chart
+        const datasets = colleges.map((college, index) => ({
+            label: college.name,
+            data: [
+                college.tuitionFee,
+                college.hostelFee,
+                college.examFee,
+                college.libraryFee,
+                college.totalFee
+            ],
+            backgroundColor: colors[index],
+            borderColor: colors[index],
+            borderWidth: 1
+        }));
+        
         window.comparisonChartInstance = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: labels,
-                datasets: [
-                    {
-                        label: college1.name,
-                        data: data1,
-                        backgroundColor: '#4f46e5',
-                        borderColor: '#4338ca',
-                        borderWidth: 1
-                    },
-                    {
-                        label: college2.name,
-                        data: data2,
-                        backgroundColor: '#10b981',
-                        borderColor: '#059669',
-                        borderWidth: 1
-                    }
-                ]
+                datasets: datasets
             },
             options: {
                 responsive: true,
