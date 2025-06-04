@@ -6,6 +6,93 @@
   <title>College Details</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Animation Keyframes */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Apply animations to elements */
+    .college-hero {
+      animation: scaleIn 0.8s ease-out;
+    }
+
+    .college-content-main {
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .college-sidebar {
+      animation: slideInRight 0.8s ease-out;
+    }
+
+    .college-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+
+    .college-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Enhanced hover effects */
+    .courses-table tr {
+      transition: all 0.3s ease;
+    }
+
+    .courses-table tr:hover {
+      background-color: rgba(79, 70, 229, 0.05);
+      transform: translateX(10px);
+    }
+
+    .facilities-list div {
+      transition: all 0.3s ease;
+    }
+
+    .facilities-list div:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-apply {
+      transition: all 0.3s ease;
+    }
+
+    .btn-apply:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+    }
+  </style>
 </head>
 <body>
   <header class="header">
@@ -87,7 +174,7 @@
               <span class="info-label">Contact</span>
               <a href="#" class="info-link" id="college-contact"></a>
             </div>
-            <a href="#" class="btn-apply" id="apply-button">Apply Now</a>
+            <a href="" class="btn-apply" id="apply-button">Apply Now</a>
           </div>
         </div>
       </div>
@@ -129,7 +216,7 @@
       
       // Update college logo
       const collegeLogo = document.getElementById('college-logo');
-      collegeLogo.src = college.logoImg;
+      collegeLogo.src = college.logoImg || '';
       collegeLogo.alt = `${college.name} Logo`;
       
       // Update college name
@@ -156,44 +243,66 @@
       // Update college description
       document.getElementById('college-description').textContent = college.description;
       
-      // Update courses list
+      // Update courses list with enhanced formatting
       const coursesList = document.getElementById('courses-list');
-      college.courses.forEach(course => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>${course.name}</td>
-          <td>${course.duration}</td>
-          <td>₹${course.fees.toLocaleString('en-IN')}</td>
-        `;
-        coursesList.appendChild(row);
-      });
+      if (college.courses && college.courses.length > 0) {
+        college.courses.forEach((course, index) => {
+          const row = document.createElement('tr');
+          row.style.animation = `fadeInUp ${0.3 + index * 0.1}s ease-out forwards`;
+          row.innerHTML = `
+            <td>
+              <div style="font-weight: 500; color: #1f2937">${course.name}</div>
+              ${course.specialization ? `<div style="font-size: 0.875rem; color: #6b7280">${course.specialization}</div>` : ''}
+            </td>
+            <td>${course.duration}</td>
+            <td>₹${course.fees.toLocaleString('en-IN')}</td>
+          `;
+          coursesList.appendChild(row);
+        });
+      }
       
-      // Update facilities list
+      // Update facilities list with animations
       const facilitiesList = document.getElementById('facilities-list');
-      college.facilities.forEach(facility => {
-        const facilityItem = document.createElement('div');
-        facilityItem.className = 'facility-item';
-        facilityItem.innerHTML = `
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          <span>${facility}</span>
-        `;
-        facilitiesList.appendChild(facilityItem);
-      });
+      if (college.facilities && college.facilities.length > 0) {
+        college.facilities.forEach((facility, index) => {
+          const facilityItem = document.createElement('div');
+          facilityItem.className = 'facility-item';
+          facilityItem.style.animation = `fadeInUp ${0.3 + index * 0.1}s ease-out forwards`;
+          facilityItem.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>${facility}</span>
+          `;
+          facilitiesList.appendChild(facilityItem);
+        });
+      }
       
       // Update sidebar information
-      document.getElementById('college-ranking').textContent = college.ranking;
-      document.getElementById('college-accreditation').textContent = college.accreditation;
+      document.getElementById('college-ranking').textContent = college.ranking || 'Not Available';
+      document.getElementById('college-accreditation').textContent = college.accreditation || 'Not Available';
       
       const collegeWebsite = document.getElementById('college-website');
-      collegeWebsite.textContent = college.website.replace(/^https?:\/\//, '');
-      collegeWebsite.href = college.website;
+      collegeWebsite.textContent = college.website ? college.website.replace(/^https?:\/\//, '') : 'Not Available';
+      collegeWebsite.href = college.website || '#';
       
       const collegeContact = document.getElementById('college-contact');
-      collegeContact.textContent = college.contact;
-      collegeContact.href = `tel:${college.contact}`;
+      collegeContact.textContent = college.contact || 'Not Available';
+      collegeContact.href = college.contact ? `tel:${college.contact}` : '#';
       
       // Set apply button action
-      document.getElementById('apply-button').href = college.website;
+      document.getElementById('apply-button').href = college.website || '#';
+
+      // Add scroll animation for sections
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.college-section').forEach(section => {
+        observer.observe(section);
+      });
     });
   </script>
 </body>
