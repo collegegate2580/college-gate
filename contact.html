@@ -8,6 +8,7 @@
   <link rel="shortcut icon" href="https://mocha-cdn.com/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="theme.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <title>Contact Us - CollegeGate Dehradun</title>
   <script src="theme.js" defer></script>
   <style>
@@ -328,23 +329,76 @@
       opacity: 0.85;
     }
     
+    /* Contact info section styles */
     .contact-info {
-      padding: 2rem;
-      background: linear-gradient(135deg, var(--primary-color), var(--primary-color-hover));
-      color: white;
+      padding: 2.5rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
       border-radius: 0.75rem;
       height: 100%;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .contact-info::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, 
+        var(--primary-color), 
+        #4ecdc4,
+        #ff6b6b,
+        var(--primary-color)
+      );
+      background-size: 300% 100%;
+      animation: gradientSlide 5s ease infinite;
     }
     
     .contact-info h2 {
-      margin-bottom: 1.5rem;
-      font-size: 1.5rem;
-      color: white;
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+      color: var(--text);
+      position: relative;
+      display: inline-block;
+    }
+    
+    .contact-info h2::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--primary-color);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+    
+    .contact-info h2:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
     }
     
     .info-item {
       display: flex;
-      margin-bottom: 1.5rem;
+      align-items: flex-start;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      background: var(--input-bg);
+      border-radius: 0.75rem;
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+    
+    .info-item:hover {
+      transform: translateX(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-color: var(--primary-color);
     }
     
     .info-icon {
@@ -352,43 +406,84 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      width: 3rem;
+      height: 3rem;
+      background: var(--primary-color);
+      border-radius: 0.75rem;
       flex-shrink: 0;
+    }
+    
+    .info-icon span {
+      font-size: 1.5rem;
       color: white;
     }
     
     .info-content h3 {
       font-size: 1.125rem;
-      margin-bottom: 0.25rem;
-      font-weight: 500;
-      color: white;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--text);
     }
     
     .info-content p {
-      opacity: 0.9;
-      color: white;
+      color: var(--text-light);
+      line-height: 1.5;
     }
     
     .social-links {
       display: flex;
-      gap: 1rem;
-      margin-top: 2rem;
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+      padding: 1.25rem;
+      background: var(--input-bg);
+      border-radius: 0.75rem;
+      border: 1px solid var(--border);
+      justify-content: center;
     }
     
     .social-link {
-      width: 2.5rem;
-      height: 2.5rem;
-      background-color: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
+      width: 3rem;
+      height: 3rem;
+      background-color: var(--primary-color);
+      border-radius: 0.75rem;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: all 0.3s ease;
       color: white;
+      font-size: 1.25rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .social-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .social-link:hover::before {
+      transform: translateY(0);
     }
     
     .social-link:hover {
-      background-color: rgba(255, 255, 255, 0.2);
       transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(var(--primary-color-rgb), 0.3);
+      background-color: var(--primary-color-hover);
+    }
+    
+    .social-link i {
+      transition: transform 0.3s ease;
+    }
+    
+    .social-link:hover i {
+      transform: scale(1.1);
     }
     
     .map-container {
@@ -548,6 +643,7 @@
     <div class="container">
       <div class="header-content">
         <a href="index.html" class="logo">
+          <img src="Classical_College_Gate_Logo__1_-removebg-preview.png" alt="CollegeGate Logo">
           College<span>Gate</span>
         </a>
         
@@ -628,40 +724,57 @@
             <h2>Get in Touch</h2>
             
             <div class="info-item">
-              <div class="info-icon">📍</div>
+              <div class="info-icon">
+                <span>📍</span>
+              </div>
               <div class="info-content">
                 <h3>Our Location</h3>
-                <p>123 College Street, Dehradun, Uttarakhand, India</p>
+                <p>123 College Street, Dehradun<br>Uttarakhand, India</p>
               </div>
             </div>
             
             <div class="info-item">
-              <div class="info-icon">📞</div>
+              <div class="info-icon">
+                <span>📞</span>
+              </div>
               <div class="info-content">
                 <h3>Phone Number</h3>
-                <p>+91 919-399-3693</p>
+                <p><a href="tel:+919193993693" style="color: inherit; text-decoration: none;">+91 919-399-3693</a></p>
               </div>
             </div>
             
             <div class="info-item">
-              <div class="info-icon">✉️</div>
+              <div class="info-icon">
+                <span>✉️</span>
+              </div>
               <div class="info-content">
                 <h3>Email Address</h3>
-                <p>info@collegegate.in</p>
+                <p><a href="mailto:info@collegegate.co" style="color: inherit; text-decoration: none;">info@collegegate.in</a></p>
               </div>
             </div>
             
             <div class="social-links">
-              <a href="#" class="social-link">FB</a>
-              <a href="#" class="social-link">IN</a>
-              <a href="#" class="social-link">TW</a>
-              <a href="#" class="social-link">YT</a>
+              <a href="#" class="social-link" title="Facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social-link" title="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="#" class="social-link" title="Twitter">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="social-link" title="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="social-link" title="YouTube">
+                <i class="fab fa-youtube"></i>
+              </a>
             </div>
           </div>
         </div>
         
         <div class="map-container fade-in">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3444.5375065551184!2d78.0421!3d30.3164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDE4JzU5LjAiTiA3OMKwMDInMzEuNiJF!5e0!3m2!1sen!2sin!4v1625641761283!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1170.0038472342867!2d78.01223935578913!3d30.32738493058919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1749030424445!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>" allowfullscreen="" loading="lazy"></iframe>
         </div>
       </div>
     </div>
