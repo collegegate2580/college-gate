@@ -172,6 +172,8 @@
     width: auto;
     object-fit: contain;
     transition: transform 0.3s ease;
+    border-radius: 50%;
+    margin-right: 2px;
   }
   
   .logo:hover img {
@@ -993,6 +995,8 @@
     
   .featured-college-card .college-overlay {
     position: absolute;
+    width: 100%;
+  height: 100%;
     top: 1rem;
     right: 1rem;
       display: flex;
@@ -2155,4 +2159,105 @@
   /* Add transition for content visibility */
   body > *:not(#preloader) {
     transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
+
+  /* Chat Container Styles */
+  .chat-container {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+  }
+
+  .chat-frame {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 400px;
+    height: 540px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+  }
+
+  .chat-frame.active {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .chat-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* Floating Chat Button Styles */
+  .floating-chat-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-color, #2563eb);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    outline: none;
+    padding: 0;
+  }
+
+  .floating-chat-btn:hover {
+    transform: translateY(-2px) scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    background: var(--primary-color-dark, #1d4ed8);
+  }
+
+  .floating-chat-btn.active {
+    transform: rotate(180deg);
+  }
+
+  .chat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .chat-icon svg {
+    stroke: currentColor;
+    width: 28px;
+    height: 28px;
+  }
+
+  /* Mobile Responsive Styles */
+  @media (max-width: 768px) {
+    .chat-container {
+      bottom: 1.5rem;
+      right: 1.5rem;
+    }
+
+    .chat-frame {
+      width: calc(100vw - 3rem);
+      height: 500px;
+      bottom: 70px;
+      right: 0;
+    }
+
+    .floating-chat-btn {
+      width: 50px;
+      height: 50px;
+    }
+    
+    .chat-icon svg {
+      width: 24px;
+      height: 24px;
+    }
   }
