@@ -46,32 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(animateCount);
   });
 });
-//preloader
-window.addEventListener("load", () => {
-  const preloader = document.getElementById("preloader");
-  const mainContent = document.body;
 
-  // Initially hide all content except preloader
-  Array.from(mainContent.children).forEach(child => {
-    if (child.id !== 'preloader') {
-      child.style.opacity = '0';
-      child.style.visibility = 'hidden';
-    }
-  });
-
-  // Wait for zoomOut to finish
-  setTimeout(() => {
-    preloader.style.display = "none";
-    // Show all content
-    Array.from(mainContent.children).forEach(child => {
-      if (child.id !== 'preloader') {
-        child.style.opacity = '1';
-        child.style.visibility = 'visible';
-        child.style.display = '';
-      }
-    });
-  }, 3500); // 3s spin + 0.5s zoom
-});
 
 // Scroll to counseling form when Apply Now is clicked
 document.querySelectorAll('.college-info button').forEach(button => {
