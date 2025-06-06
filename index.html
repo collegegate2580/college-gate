@@ -31,25 +31,33 @@
           College<span>Gate</span>
         </a>
         
-        <nav class="main-nav" id="main-nav">
-          <a href="index.html" class="nav-link active">Home</a>
-          <a href="colleges.html" class="nav-link">Colleges</a>
-          <a href="counselling.html" class="nav-link">Counselling</a>
-          <a href="comparison.html" class="nav-link">Compare Fees</a>
-          <a href="blog.html" class="nav-link">Blog</a>
-          <a href="contact.html" class="nav-link">Contact</a>
-        </nav>
-        
-        <div class="nav-actions">
-          <!-- Theme toggle will be inserted here by theme.js -->
-          <button class="btn-primary" onclick="window.location.href='tel:+919193993693'">Get Assistance</button>
-        </div>
-        
-        <button class="mobile-menu-btn" id="menu-toggle">
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
           <span></span>
           <span></span>
           <span></span>
         </button>
+
+        <div class="nav-wrapper" id="nav-wrapper">
+          <nav class="main-nav" id="main-nav">
+            <div class="nav-links">
+              <a href="index.html" class="nav-link active">Home</a>
+              <a href="colleges.html" class="nav-link">Colleges</a>
+              <a href="counselling.html" class="nav-link">Counselling</a>
+              <a href="comparison.html" class="nav-link">Compare Fees</a>
+              <a href="blog.html" class="nav-link">Blog</a>
+              <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+          </nav>
+          
+          <div class="nav-actions">
+            <button class="btn-primary contact-btn" onclick="window.location.href='tel:+919193993693'">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <span>Get Assistance</span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </header>
@@ -821,6 +829,61 @@
       const chatFrame = document.getElementById('chat-frame');
       chatFrame.classList.toggle('active');
       this.classList.toggle('active');
+    });
+
+    // Mobile menu functionality
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const navWrapper = document.getElementById('nav-wrapper');
+    const mainNav = document.getElementById('main-nav');
+    
+    mobileMenuBtn.addEventListener('click', function() {
+      this.classList.toggle('active');
+      navWrapper.classList.toggle('active');
+      document.body.classList.toggle('menu-open');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      if (navWrapper.classList.contains('active') && 
+          !navWrapper.contains(event.target) && 
+          !mobileMenuBtn.contains(event.target)) {
+        navWrapper.classList.remove('active');
+        mobileMenuBtn.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      }
+    });
+
+    // Close menu when clicking a nav link
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navWrapper.classList.remove('active');
+        mobileMenuBtn.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      });
+    });
+
+    // Handle scroll
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      const header = document.getElementById('header');
+      
+      if (currentScroll <= 0) {
+        header.classList.remove('scroll-up');
+        header.classList.remove('scroll-down');
+        return;
+      }
+      
+      if (currentScroll > lastScroll && !header.classList.contains('scroll-down')) {
+        // Scrolling down
+        header.classList.remove('scroll-up');
+        header.classList.add('scroll-down');
+      } else if (currentScroll < lastScroll && header.classList.contains('scroll-down')) {
+        // Scrolling up
+        header.classList.remove('scroll-down');
+        header.classList.add('scroll-up');
+      }
+      lastScroll = currentScroll;
     });
   </script>
   
