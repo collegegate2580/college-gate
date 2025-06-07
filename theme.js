@@ -34,16 +34,12 @@ function initTheme() {
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
       if (!localStorage.getItem('theme')) {
         setTheme(e.matches ? 'dark' : 'light');
-    }
+      }
     });
   }
 }
 
 function setupThemeToggle() {
-  // Remove any existing theme toggles
-  const existingToggles = document.querySelectorAll('.theme-toggle');
-  existingToggles.forEach(toggle => toggle.remove());
-
   // Create theme toggle button
   const themeToggle = document.createElement('button');
   themeToggle.className = 'theme-toggle';
@@ -61,48 +57,44 @@ function setupThemeToggle() {
   }
   
   // Add styles for the toggle button
-  const styleId = 'theme-toggle-styles';
-  if (!document.getElementById(styleId)) {
-    const style = document.createElement('style');
-    style.id = styleId;
-    style.textContent = `
-      .theme-toggle {
-        background: none;
-        border: none;
-        padding: 0.5rem;
-        margin-right: 1rem;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--text);
-        border-radius: 50%;
-        transition: background-color 0.3s ease;
-      }
-      
-      .theme-toggle:hover {
-        background-color: var(--nav-hover);
-      }
-      
-      .theme-toggle .sun-icon,
-      .theme-toggle .moon-icon {
-        transition: transform 0.5s ease, opacity 0.3s ease;
-      }
-      
-      .theme-toggle .sun-icon {
-        display: none;
-      }
-      
-      [data-theme="dark"] .theme-toggle .sun-icon {
-        display: block;
-      }
-      
-      [data-theme="dark"] .theme-toggle .moon-icon {
-        display: none;
-      }
-    `;
-    document.head.appendChild(style);
-  }
+  const style = document.createElement('style');
+  style.textContent = `
+    .theme-toggle {
+      background: none;
+      border: none;
+      padding: 0.5rem;
+      margin-right: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      border-radius: 50%;
+      transition: background-color 0.3s ease;
+    }
+    
+    .theme-toggle:hover {
+      background-color: var(--nav-hover);
+    }
+    
+    .theme-toggle .sun-icon,
+    .theme-toggle .moon-icon {
+      transition: transform 0.5s ease, opacity 0.3s ease;
+    }
+    
+    .theme-toggle .sun-icon {
+      display: none;
+    }
+    
+    [data-theme="dark"] .theme-toggle .sun-icon {
+      display: block;
+    }
+    
+    [data-theme="dark"] .theme-toggle .moon-icon {
+      display: none;
+    }
+  `;
+  document.head.appendChild(style);
   
   // Add event listener to toggle theme
   themeToggle.addEventListener('click', toggleTheme);
@@ -124,14 +116,13 @@ function setTheme(theme) {
       moonIcon.style.display = 'block';
     }
   }
+  
+  // Update body class
+  document.body.classList.toggle('dark-mode', theme === 'dark');
 }
 
 function toggleTheme() {
   const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
   const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-  
   setTheme(newTheme);
-  
-  // Dispatch event for other scripts
-  document.dispatchEvent(new CustomEvent('themechange', { detail: { theme: newTheme } }));
 }
