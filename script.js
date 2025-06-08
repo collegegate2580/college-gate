@@ -1,9 +1,11 @@
-// Initialize AOS (Animate On Scroll)
-AOS.init({
-  duration: 1200,
-  once: true,
-  easing: 'ease-in-out',
-});
+// Initialize AOS if available
+if (typeof AOS !== 'undefined') {
+  AOS.init({
+    duration: 1200,
+    once: true,
+    easing: 'ease-in-out',
+  });
+}
 
 // Enhanced Testimonial Carousel with Fade Animation
 const testimonials = document.querySelectorAll('.testimonial');
@@ -66,9 +68,49 @@ document.querySelectorAll('.college-card').forEach(card => {
   });
 });
 
-function toggleMenu() {
-  const navbar = document.getElementById("navbar");
-  navbar.classList.toggle("show");
+// Remove redundant mobile menu code
+function initHeaderScroll() {
+  const header = document.getElementById('header');
+  const navWrapper = document.querySelector('.nav-wrapper');
+  
+  if (!header || !navWrapper) return;
+  
+  let lastScroll = 0;
+  
+  window.addEventListener('scroll', () => {
+    if (navWrapper.classList.contains('active')) return;
+    
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll <= 0) {
+      header.classList.remove('scroll-up');
+      return;
+    }
+    
+    if (currentScroll > lastScroll && !header.classList.contains('scroll-down')) {
+      header.classList.remove('scroll-up');
+      header.classList.add('scroll-down');
+    } else if (currentScroll < lastScroll && header.classList.contains('scroll-down')) {
+      header.classList.remove('scroll-down');
+      header.classList.add('scroll-up');
+    }
+    
+    lastScroll = currentScroll;
+  });
+}
+
+function setActiveNavLink() {
+  const currentPath = window.location.pathname;
+  const navLinks = document.querySelectorAll('.nav-link');
+  
+  navLinks.forEach(link => {
+    const linkPath = link.getAttribute('href');
+    if (currentPath.endsWith(linkPath)) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
 }
 
 
