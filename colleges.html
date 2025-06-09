@@ -12,24 +12,35 @@
 <body>
   <!-- Header -->
   <header class="header" id="header">
-    <div class="container">
-      <div class="header-content">
-        <a href="index.html" class="logo">
-          <img src="Classical_College_Gate_Logo__1_-removebg-preview.png" alt="CollegeGate Logo">
-          College<span>Gate</span>
-        </a>
-        
-        <nav class="main-nav" id="main-nav">
-          <a href="index.html" class="nav-link">Home</a>
-          <a href="colleges.html" class="nav-link active">Colleges</a>
-          <a href="counselling.html" class="nav-link">Counselling</a>
-          <a href="comparison.html" class="nav-link">Compare Fees</a>
-          <a href="blog.html" class="nav-link">Blog</a>
-          <a href="contact.html" class="nav-link">Contact</a>
-        </nav>
+    <div class="header-content">
+      <a href="index.html" class="logo" aria-label="College Gate Home">
+        <img src="Classical_College_Gate_Logo__1_-removebg-preview.png" alt="College Gate Logo" width="180" height="50">
+        College<span>Gate</span>
+      </a>
+      
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-wrapper" id="main-nav" style="margin-left: 570px;">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="colleges.html" class="nav-link active">Colleges</a></li>
+          <li><a href="counselling.html" class="nav-link">Counselling</a></li>
+          <li><a href="comparison.html" class="nav-link">Compare</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+          <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+        </ul>
         
         <div class="nav-actions">
-          <button class="btn-primary" onclick="window.location.href='tel:+919193993693'">Get Assistance</button>
+          <a href="tel:+919193993693" class="contact-btn">
+            <svg class="icon" viewBox="0 0 24 24" width="20" height="20">
+              <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+            Call Us
+          </a>
         </div>
       </div>
     </div>
@@ -53,6 +64,12 @@
       <section class="filter-section">
         <div class="search-box-large">
           <input type="text" id="college-search" placeholder="Search colleges by name, course, or location...">
+          <button id="search-button" class="search-button" aria-label="Search colleges">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
         </div>
         <div class="filter-grid">
           <select class="filter-select" id="course-filter">
@@ -165,5 +182,58 @@
   <script src="data.js"></script>
   <script src="theme.js"></script>
   <script src="colleges.js"></script>
+  <script>
+    // Mobile menu functionality
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mainNav = document.getElementById('main-nav');
+    const body = document.body;
+    
+    // Create overlay element
+    let overlay = document.querySelector('.menu-overlay');
+    if (!overlay) {
+      overlay = document.createElement('div');
+      overlay.className = 'menu-overlay';
+      document.body.appendChild(overlay);
+    }
+
+    function toggleMenu() {
+      const isOpen = mainNav.classList.contains('active');
+      
+      if (isOpen) {
+        mainNav.classList.remove('active');
+        mobileMenuBtn.classList.remove('active');
+        overlay.classList.remove('active');
+        body.style.overflow = '';
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      } else {
+        mainNav.classList.add('active');
+        mobileMenuBtn.classList.add('active');
+        overlay.classList.add('active');
+        body.style.overflow = 'hidden';
+        mobileMenuBtn.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    // Toggle menu on button click
+    mobileMenuBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      toggleMenu();
+    });
+
+    // Close menu when clicking overlay
+    overlay.addEventListener('click', toggleMenu);
+
+    // Close menu when clicking a nav link
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', toggleMenu);
+    });
+
+    // Close menu on window resize if open
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 991 && mainNav.classList.contains('active')) {
+        toggleMenu();
+      }
+    });
+  </script>
 </body>
 </html>
