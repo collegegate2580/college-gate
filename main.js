@@ -6,11 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
   link.rel = 'stylesheet';
   document.head.appendChild(link);
   
-  // Add utility script
-  const utilsScript = document.createElement('script');
-  utilsScript.src = './js/utils.js';
-  document.body.appendChild(utilsScript);
-  
   // Initialize the application
   initApp();
   
@@ -37,11 +32,15 @@ document.addEventListener('DOMContentLoaded', function() {
       if (entry.isIntersecting) {
         const target = entry.target;
         const value = target.textContent;
-        if (value.includes('+')) {
-          animateNumber(target, parseInt(value), true);
-        } else {
-          animateNumber(target, parseFloat(value), false);
-        }
+        
+        // Parse the value and determine if it has a plus sign or percentage
+        const hasPlus = value.includes('+');
+        const hasPercent = value.includes('%');
+        const numericValue = parseFloat(value.replace(/[^0-9.]/g, ''));
+        
+        // Animate the number
+        animateNumber(target, numericValue, hasPlus, hasPercent);
+        
         observer.unobserve(target);
       }
     });
@@ -74,9 +73,6 @@ function initApp() {
   // Handle header scroll effect
   initHeaderScroll();
   
-  // Init mobile menu toggle
-  initMobileMenu();
-  
   // Load featured colleges on homepage
   if (document.getElementById('featured-colleges')) {
     loadFeaturedColleges();
@@ -88,7 +84,10 @@ function initApp() {
   }
   
   // Set current year in footer
-  document.getElementById('current-year').textContent = new Date().getFullYear();
+  const yearElement = document.getElementById('current-year');
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+  }
   
   // Add active class to current navigation link
   setActiveNavLink();
@@ -96,42 +95,47 @@ function initApp() {
 
 function initHeaderScroll() {
   const header = document.getElementById('header');
+  const navWrapper = document.querySelector('.nav-wrapper');
   
-  window.addEventListener('scroll', function() {
-    if (window.scrollY > 20) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
+  if (!header || !navWrapper) return; // Exit if elements don't exist
+  
+  let lastScroll = 0;
+  
+  window.addEventListener('scroll', () => {
+    // Don't hide header if mobile menu is open
+    if (navWrapper.classList.contains('active')) return;
+    
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll <= 0) {
+      header.classList.remove('scroll-up');
+      return;
     }
+    
+    if (currentScroll > lastScroll && !header.classList.contains('scroll-down')) {
+      // Scrolling down
+      header.classList.remove('scroll-up');
+      header.classList.add('scroll-down');
+    } else if (currentScroll < lastScroll && header.classList.contains('scroll-down')) {
+      // Scrolling up
+      header.classList.remove('scroll-down');
+      header.classList.add('scroll-up');
+    }
+    
+    lastScroll = currentScroll;
   });
-  
-  // Trigger scroll event on page load
-  window.dispatchEvent(new Event('scroll'));
-}
-
-function initMobileMenu() {
-  const menuToggle = document.getElementById('menu-toggle');
-  const mainNav = document.getElementById('main-nav');
-  
-  if (menuToggle) {
-    menuToggle.addEventListener('click', function() {
-      mainNav.classList.toggle('active');
-      this.classList.toggle('active');
-    });
-  }
 }
 
 function setActiveNavLink() {
-  const currentPage = window.location.pathname;
+  const currentPath = window.location.pathname;
   const navLinks = document.querySelectorAll('.nav-link');
   
   navLinks.forEach(link => {
-    link.classList.remove('active');
     const linkPath = link.getAttribute('href');
-    
-    if (currentPage.endsWith(linkPath) || 
-        (currentPage === '/' && linkPath === 'index.html')) {
+    if (currentPath.endsWith(linkPath)) {
       link.classList.add('active');
+    } else {
+      link.classList.remove('active');
     }
   });
 }
@@ -146,8 +150,6 @@ function loadFeaturedColleges() {
 }
 
 function createCollegeCard(college) {
-  const minFee = Math.min(...college.courses.map(c => c.fees));
-  
   const cardHTML = `
     <div class="college-card" data-college-id="${college.id}">
       <div class="college-image">
@@ -161,7 +163,7 @@ function createCollegeCard(college) {
             ${college.rating}
           </span>
           <span class="college-established">• ${college.established} Est.</span>
-          <span class="college-type">${college.type}</span>
+          <span class="college-type ${college.type.toLowerCase()}">${college.type}</span>
         </div>
       </div>
       
@@ -185,11 +187,11 @@ function createCollegeCard(college) {
         
         <div class="college-fees">
           <span class="fee-label">Fees starting from: </span>
-          <span class="fee-value">₹${minFee.toLocaleString()}</span>
+          <span class="fee-value">₹${Math.min(...college.courses.map(c => c.fees)).toLocaleString()}</span>
         </div>
         
         <div class="college-actions">
-          <a href="college-detail.html?id=${college.id}" class="btn-primary btn-view-details">
+          <a href="college-details.html?id=${college.id}" class="btn-primary btn-view-details">
             View Details
           </a>
         </div>
@@ -202,7 +204,7 @@ function createCollegeCard(college) {
   
   // Add hover animation
   const card = wrapper.firstChild;
-  card.style.cursor = 'pointer'; // Add pointer cursor to indicate clickable
+  card.style.cursor = 'pointer';
   
   card.addEventListener('mouseenter', function() {
     this.style.transform = 'translateY(-5px)';
@@ -214,7 +216,6 @@ function createCollegeCard(college) {
   
   // Add click handler for phone call
   card.addEventListener('click', function(e) {
-    // Don't trigger if clicking on the View Details button
     if (!e.target.closest('.btn-view-details')) {
       window.location.href = 'tel:+919193993693';
     }
@@ -297,25 +298,41 @@ function revealOnScroll() {
   });
 }
 
-function animateNumber(element, target, hasPlus) {
+function animateNumber(element, target, hasPlus, hasPercent) {
   let current = 0;
   const duration = 2000; // 2 seconds
-  const step = target / (duration / 16); // 60fps
-  const isDecimal = !Number.isInteger(target);
+  const fps = 60;
+  const totalFrames = (duration / 1000) * fps;
+  const increment = target / totalFrames;
+  const isDecimal = target % 1 !== 0;
 
   function update() {
-    current += step;
-    if (current >= target) {
-      element.textContent = hasPlus ? Math.floor(target) + '+' : 
-                           (isDecimal ? target.toFixed(1) : Math.floor(target));
-      return;
+    current = Math.min(current + increment, target);
+    
+    let displayText;
+    if (isDecimal) {
+      // Always show one decimal place for decimal numbers
+      displayText = current.toFixed(1);
+    } else {
+      displayText = Math.floor(current).toString();
     }
-    element.textContent = hasPlus ? Math.floor(current) + '+' : 
-                         (isDecimal ? current.toFixed(1) : Math.floor(current));
-    requestAnimationFrame(update);
+    
+    // Add plus sign and/or percent sign if needed
+    if (hasPlus) {
+      displayText += '+';
+    }
+    if (hasPercent) {
+      displayText += '%';
+    }
+    
+    element.textContent = displayText;
+    
+    if (current < target) {
+      requestAnimationFrame(update);
+    }
   }
 
-  update();
+  requestAnimationFrame(update);
 }
 
 // Add hover effect for review cards
